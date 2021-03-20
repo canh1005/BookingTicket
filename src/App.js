@@ -13,14 +13,6 @@ import ProfilePage from './pages/ProfilePage';
 // import {routeHome} from './routes'
 
 class App extends Component {
-  showLayoutHome = (routes) => {
-    if (routes && routes.length > 0) {
-      return routes.map((items, index) => {
-        return <Home key={index} exact={items.exact} path={items.path} Component={items.component} />
-
-      })
-    }
-  }
   render() {
     return (
       <Switch>

@@ -46,7 +46,7 @@ function ProfilePage(props) {
                     <Paper>
                         <Typography>Tài khoản: {profileData.taiKhoan}</Typography>
                         <Typography>Email: {profileData.email}</Typography>
-                        <Typography>Số điện thoại: {profileData.soDt}</Typography>
+                        <Typography>Số điện thoại: {profileData.soDT}</Typography>
                         <Button onClick={handleClickOpen}>Xem lịch sử đặt vé</Button>
                         {renderBookingTicketHistory(profileData.thongTinDatVe)}
                     </Paper>

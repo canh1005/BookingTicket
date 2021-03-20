@@ -4,11 +4,14 @@ import { connect } from 'react-redux'
 import * as Action from './../../redux/modules/ListMovieReducer/action'
 import { useEffect } from 'react'
 import Movie from '../Movie'
+import { Typography } from '@material-ui/core'
+import { listMovieStyle } from './../../material-ui/style'
 
 // import Carousel from 'react-bootstrap/Carousel'
 
 
 function CarouselMovie(props) {
+    const ListMovieStyle = listMovieStyle()
     useEffect(() => {
         // console.log("a");
         props.fetchListMovie();
@@ -30,9 +33,12 @@ function CarouselMovie(props) {
         }
     }
     return (
-        <Slider slidesToShow={3} slidesToScroll={1}>
-            {renderListMovie()}
-        </Slider>
+        <div id="dsPhim">
+            <Typography variant="h2" className={ListMovieStyle.title}>Danh sách phim</Typography>
+            <Slider slidesToShow={3} slidesToScroll={1} rows={2} centerMode={true} infinite={true}>
+                {renderListMovie()}
+            </Slider>
+        </div>
     )
 
 

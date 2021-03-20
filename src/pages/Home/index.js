@@ -25,6 +25,7 @@ import NavBarHome from '../../components/NavBarHome'
 
 import React, { Component } from 'react'
 import HomePage from './HomePage'
+import Footer from '../../components/Footer'
 
 export default class Home extends Component {
     render() {
@@ -32,6 +33,7 @@ export default class Home extends Component {
             <div>
                 <NavBarHome/>
                 <HomePage/>
+                {/* <Footer/> */}
             </div>
         )
     }

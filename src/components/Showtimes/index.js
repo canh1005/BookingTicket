@@ -1,13 +1,15 @@
-import { Avatar } from '@material-ui/core';
+import { Avatar, Typography } from '@material-ui/core';
 import React, { useEffect, useState } from 'react'
 import { Tab, TabPane, Tabs } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import CinemaInfo from '../CinemaInfo';
 import { actListCinemaAPI } from './../../redux/modules/ListCinemaReducer/action'
 import { actShowTimeByCinemaGroupIdAPI } from './../../redux/modules/ShowtimesWithCinemaGroup/action'
+import {cinemaStyle} from './../../material-ui/style'
 
 function Showtimes(props) {
   const [state, setstate] = useState("BDHStar")
+  const cinemaStyled = cinemaStyle();
   useEffect(() => {
     props.fecthListCinema();
     // eslint-disable-next-line react-hooks/exhaustive-deps  
@@ -40,12 +42,14 @@ function Showtimes(props) {
     }
   }
   return (
-    <Tabs defaultActiveKey={state} onSelect={k => { setstate(k); getCinemaInfo(k, "GP01") }}>
-      {/* {console.log("", state)} */}
-      {renderListCinema()}
-      {renderCinemaInfo()}
-    </Tabs>
-
+    <div id='cumRap'>
+      <Typography variant="h2" className={cinemaStyled.title}>Cụm Rạp</Typography>
+      <Tabs className={cinemaStyled.tabs} defaultActiveKey={state} onSelect={k => { setstate(k); getCinemaInfo(k, "GP01") }}>
+        {/* {console.log("", state)} */}
+        {renderListCinema()}
+        {renderCinemaInfo()}
+      </Tabs>
+    </div>
   )
 }
 

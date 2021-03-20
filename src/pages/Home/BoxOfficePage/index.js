@@ -11,9 +11,10 @@ function BoxOfficePage(props) {
         props.fecthTicket(id);
         // eslint-disable-next-line react-hooks/exhaustive-deps 
     }, [])
+    // console.log("Show id: ",id);
     return (
         <div>
-            <DanhSachGhe showTimeData={showTimeData}/>
+            <DanhSachGhe showTimeData={showTimeData} maLichChieu={props.match.params.id}/>
         </div>
     )
 }

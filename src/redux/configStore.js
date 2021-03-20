@@ -9,6 +9,7 @@ import {showTimeWithCinemaGroupReducer} from './modules/ShowtimesWithCinemaGroup
 import {boxOfficeReducer} from './modules/BoxOfficeReducer/reducer'
 import {profileReducer} from './modules/ProfileReducer/reducer'
 import {userEditReducer} from './modules/EditProfileReducer/reducer'
+import {bookingTicketReducer} from './modules/BookingTicketReducer/reducer'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
     boxOfficeReducer,
     profileReducer,
     userEditReducer,
+    bookingTicketReducer,
 })
 
 export const store = createStore(

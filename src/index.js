@@ -13,12 +13,15 @@ import 'popper.js/dist/umd/popper.min.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+// import './utils/modal-video.scss';
 import { BrowserRouter } from 'react-router-dom';
+import ScrollToTop from './components/ScrollToTop';
 
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>
       <App />
+      <ScrollToTop/>
     </Provider>,
   </BrowserRouter>,
   

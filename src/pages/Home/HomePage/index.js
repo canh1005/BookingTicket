@@ -1,17 +1,19 @@
 
-import React, { Component } from 'react'
+import React from 'react'
 import CarouselMovie from '../../../components/CarouselMovie'
 import Showtimes from '../../../components/Showtimes'
+import { body } from '../../../material-ui/style'
 
-class HomePage extends Component {
-    render() {
-        return (
+function HomePage() {
+    const bodyStyle = body();
+    return (
+        <div className={bodyStyle.root}>
             <div className="container">
-                <CarouselMovie/>
-                <Showtimes/>
+                <CarouselMovie />
+                <Showtimes />
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 

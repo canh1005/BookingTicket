@@ -1,6 +1,8 @@
 import { NavLink, withRouter, Link } from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link'
 import { navBar } from './../../material-ui/style'
 import logo from './../../assets/web-logo.png'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import React from 'react'
 import Button from '@material-ui/core/Button';
@@ -17,6 +19,7 @@ import { actLogout } from './../../redux/modules/LoginReducer/action'
 function NavBarHome(props) {
     const [open, setOpen] = React.useState(false);
     const anchorRef = React.useRef(null);
+    const classes = navBar();
     const handleToggle = () => {
         setOpen((prevOpen) => !prevOpen);
     };
@@ -34,7 +37,7 @@ function NavBarHome(props) {
             setOpen(false);
         }
     }
-    const classes = navBar()
+
     const handleLogout = () => {
         props.fetchLogout(props.history);
     }
@@ -48,8 +51,9 @@ function NavBarHome(props) {
                         aria-controls={open ? 'menu-list-grow' : undefined}
                         aria-haspopup="true"
                         onClick={handleToggle}
+                        className={classes.text}
                     >
-                        {User.hoTen}
+                        {User.hoTen}<ExpandMoreIcon />
                     </Button>
                     <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
                         {({ TransitionProps, placement }) => (
@@ -81,14 +85,14 @@ function NavBarHome(props) {
     }
     return (
         <div className={classes.root}>
-            <NavLink to='/'><img width='50' src={logo} alt='' /></NavLink>
-            <div>
-                <NavLink className={classes.link} to='#abc'>Lịch chiếu</NavLink>
-                <NavLink className={classes.link} to='#abc'>Cụm rạp</NavLink>
-                <NavLink className={classes.link} to='#abc'>Tin tức</NavLink>
-                <NavLink className={classes.link} to='#abc'>Ứng dụng</NavLink>
+            <div className={classes.body}>
+                <NavLink to='/'><img width='50' src={logo} alt='' /></NavLink>
+                <div>
+                    <HashLink className={classes.link} to='#dsPhim'>Danh sách phim</HashLink>
+                    <HashLink smooth className={classes.link} to='#cumRap'>Cụm rạp</HashLink>
+                </div>
+                {renderNavBarHome()}
             </div>
-            {renderNavBarHome()}
         </div>
     )
 }
