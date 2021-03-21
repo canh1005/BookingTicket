@@ -9,7 +9,11 @@ import {showTimeWithCinemaGroupReducer} from './modules/ShowtimesWithCinemaGroup
 import {boxOfficeReducer} from './modules/BoxOfficeReducer/reducer'
 import {profileReducer} from './modules/ProfileReducer/reducer'
 import {userEditReducer} from './modules/EditProfileReducer/reducer'
-import {bookingTicketReducer} from './modules/BookingTicketReducer/reducer'
+import {listUserReducer} from './modules/QuanLyNguoiDung/ListNguoiDungReducer/reducer'
+import {deleteUserReducer} from './modules/QuanLyNguoiDung/XoaNguoiDungReducer/reducer'
+import {searchUserReducer} from './modules/QuanLyNguoiDung/TimKiemNguoiDungReducer/reducer'
+import {editUserReducer} from './modules/QuanLyNguoiDung/SuaThongTinReducer/reducer'
+import {addFilmReducer} from './modules/QuanLyPhim/ThemPhimReducer/reducer'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -23,7 +27,11 @@ const rootReducer = combineReducers({
     boxOfficeReducer,
     profileReducer,
     userEditReducer,
-    bookingTicketReducer,
+    listUserReducer,
+    deleteUserReducer,
+    searchUserReducer,
+    editUserReducer,
+    addFilmReducer,
 })
 
 export const store = createStore(
