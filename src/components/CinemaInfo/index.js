@@ -1,7 +1,7 @@
-import { Avatar, Grid, Paper, Typography, Button } from '@material-ui/core'
+import { Avatar, Grid, Paper, Typography } from '@material-ui/core'
 import React, { useState } from 'react'
 import { NavLink, TabPane } from 'react-bootstrap';
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { cinemaStyle } from '../../material-ui/style'
 export default function CinemaInfo(props) {
     const [state, setState] = useState();
@@ -24,6 +24,7 @@ export default function CinemaInfo(props) {
     const renderShowTimeByCinema = () => {
         if (cinema) {
             return cinema.lstCumRap.map(item => {
+                
                 if (item.maCumRap === state) {
                     return item.danhSachPhim.map(dsPhim => {
                         return <TabPane eventKey={item.maCumRap} key={dsPhim.maPhim}>
