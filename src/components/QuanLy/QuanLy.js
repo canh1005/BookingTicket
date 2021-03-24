@@ -1,13 +1,10 @@
-import React, { Component } from 'react';
-import QuanLyNguoiDung from './QuanLyNguoiDung/index';
-import QuanLyPhim from './QuanLyPhim/index'
-export default class QuanLy extends Component {
-    render() {
+import React from 'react';
+import Dashboard from '../DashboardAdmin/Dashboard';
+export default function QuanLy(props) {
         return (
             <div>
-                <QuanLyNguoiDung/>
-                <QuanLyPhim/>
+                <Dashboard/>
+                {props.children}
             </div>
         )
-    }
 }
