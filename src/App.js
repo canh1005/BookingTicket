@@ -11,15 +11,14 @@ import PageNotFound from './pages/PageNotFound';
 import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage';
 import Admin from './pages/Admin';
-import QuanLyPhim from './components/QuanLy/QuanLyPhim';
-import QuanLyNguoiDung from './components/QuanLy/QuanLyNguoiDung';
+import { routeAdmin } from './routes';
 // import {routeHome} from './routes'
 
 class App extends Component {
-  showLayoutHome = (routes) => {
+  showLayoutAdmin = (routes) => {
     if (routes && routes.length > 0) {
       return routes.map((items, index) => {
-        return <Home key={index} exact={items.exact} path={items.path} Component={items.component} />
+        return <Admin key={index} exact={items.exact} path={items.path} Component={items.component} />
 
       })
     }
@@ -34,9 +33,7 @@ class App extends Component {
         <Route path="/register" component={RegisterPage}/>
         <Route path="/boxoffice/:id" component={BoxOfficePage}/>
         <Route path="/profile" component={ProfilePage}/>
-        <Route path="/AdminHome" component={Admin}/>
-        <Route path="/Dashboard/QuanLyNguoiDung" component={QuanLyNguoiDung}/>
-        <Route path="/Dashboard/QuanLyPhim" component={QuanLyPhim}/>
+        {this.showLayoutAdmin(routeAdmin)}
         {/* {this.showLayoutHome(routeHome)} */}
         <Route path="" component={PageNotFound} />
       </Switch>
