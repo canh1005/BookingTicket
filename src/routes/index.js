@@ -1,17 +1,23 @@
-import HomePage from "../pages/Home/HomePage";
+import QuanLyNguoiDung from "../components/QuanLy/QuanLyNguoiDung";
+import QuanLyPhim from "../components/QuanLy/QuanLyPhim";
 
 
-const routeHome = [
+const routeAdmin = [
     {
-        exact: true,
-        path: "/",
-        component: HomePage,
+        exact: false,
+        path: "/AdminHome",
+        component: QuanLyNguoiDung,
     },
     {
         exact: false,
-        path: "/home",
-        component: HomePage,
+        path: "/Dashboard/QuanLyPhim",
+        component: QuanLyPhim,
+    },
+    {
+        exact: false,
+        path: "/Dashboard/QuanLyNguoiDung",
+        component: QuanLyNguoiDung,
     },
 ]
 
-export {routeHome}
+export {routeAdmin}
