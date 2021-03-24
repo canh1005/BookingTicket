@@ -64,7 +64,7 @@ function NavBarHome(props) {
                                 <Paper>
                                     <ClickAwayListener onClickAway={handleClose}>
                                         <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                                            {User.maLoaiNguoiDung === "QuanTri" && <MenuItem onClick={handleClose}>Dashboard</MenuItem>}
+                                            {User.maLoaiNguoiDung === "QuanTri" && <MenuItem onClick={handleClose}><Link to="/AdminHome">Dashboard</Link></MenuItem>}
                                             <MenuItem onClick={handleClose}><Link to="/profile">Profile</Link></MenuItem>
                                             <MenuItem onClick={handleLogout}>Logout</MenuItem>
                                         </MenuList>
