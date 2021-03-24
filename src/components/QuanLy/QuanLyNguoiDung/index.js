@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { QuanLyTemplate } from '../../../styled/styled';
-import Dashboard from '../../DashboardAdmin/Dashboard';
 import ListNguoiDung from '.././QuanLyNguoiDung/ListNguoiDung';
 import EditUserModal from '.././QuanLyNguoiDung/Modal/EditUserModal';
 // import DeleteUserModal from '.././QuanLyNguoiDung/Modal/DeleteUserModal';
@@ -11,7 +10,6 @@ export default class QuanLyNguoiDung extends Component {
     render() {
         return (
             <QuanLyTemplate>
-                <Dashboard />
 
                 <div className=''>
                     <div className=''>
