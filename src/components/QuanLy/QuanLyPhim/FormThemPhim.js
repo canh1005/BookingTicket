@@ -10,7 +10,7 @@ class FormThemPhim extends Component {
             tenPhim: "",
             biDanh: "",
             trailer: "",
-            hinhAnh: "",
+            hinhAnh: {},
             moTa: "",
             maNhom: "",
             ngayKhoiChieu: "",
@@ -20,28 +20,36 @@ class FormThemPhim extends Component {
     user = JSON.parse(localStorage.getItem("User"));
     handleOnChange = (e) => {
         let target = e.target;
-        if(target.name === 'hinhAnh'){
-            this.setState({hinhAnh: e.target.files[0]},()=>{
+        if (target.name === 'hinhAnh') {
+            this.setState({ hinhAnh: e.target.files[0] }, () => {
                 console.log(this.state);
             });
-        }else{
-            this.setState({[e.target.name]: e.target.value},()=>{
-                console.log(this.state);
-            })
+        } else {
+            this.setState({ [e.target.name]: e.target.value })
         }
-        console.log(this.state);
     }
 
-    handleSubmit = (e) =>{
+    handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
-        this.props.addFilm(this.state, this.user.accessToken)
+        const frmData = new FormData();
+        for (let key in this.state) {
+            frmData.append(key, this.state[key])
+        }
+        this.props.addFilm(frmData)
     }
-
+    renderNoti() {
+        const { err } = this.props;
+        if (err && err.response.status === 200) {
+            return <div className="alert alert-success">{err.response.data}</div>
+        } else if (err && err.response.status === 500) {
+            return <div className="alert alert-danger">{err.response.data}</div>
+        }
+    }
     render() {
         return (
             <div className="container mt-3">
                 <form onSubmit={this.handleSubmit}>
+                    {this.renderNoti()}
                     <div className="form-row ">
                         <div className="form-group col-md-6">
                             <Label htmlFor="tenPhim">Tên phim:</Label>
@@ -60,7 +68,7 @@ class FormThemPhim extends Component {
                         <div className="form-group col-md-6">
                             <Label htmlFor="hinhAnh">Hình ảnh:</Label>
                             <div className="custom-file">
-                                <input type="file" onChange={this.handleOnChange} name="hinhAnh" className="custom-file-input" id="validatedCustomFile" required />
+                                <input type="file" onChange={this.handleOnChange} name="hinhAnh" className="custom-file-input" id="validatedCustomFile" />
                                 <label className="custom-file-label" htmlFor="validatedCustomFile">Chọn file...</label>
                                 <div className="invalid-feedback">Example invalid custom file feedback</div>
                             </div>
@@ -76,19 +84,12 @@ class FormThemPhim extends Component {
                     </div>
                     <div className="form-group">
                         <Label htmlFor="ngayKhoiChieu">Ngày khởi chiếu</Label>
-                        <input type="text" onChange={this.handleOnChange} name="ngayKhoiChieu" className="form-control" id="maNhom" placeholder="DD/MM/YYYY" value="GP01"/>
+                        <input type="text" onChange={this.handleOnChange} name="ngayKhoiChieu" className="form-control" id="ngayKhoiChieu" placeholder="DD/MM/YYYY" />
                     </div>
-                    {/* <div className="col-sm-8 mb-4 p-0">
-                        <Label className="col-sm-2 p-0" htmlFor="danhGia">Đánh giá: </Label>
-                        <select className="custom-select col-sm-3 " name="danhGia" id="danhGia">
-                            <option selected>Chọn đánh giá</option>
-                            <option value={1}>1*</option>
-                            <option value={2}>2*</option>
-                            <option value={3}>3*</option>
-                            <option value={4}>4*</option>
-                            <option value={5}>5*</option>
-                        </select>
-                    </div> */}
+                    <div className="form-group">
+                        <Label htmlFor="danhGia">Đánh giá</Label>
+                        <input type="text" onChange={this.handleOnChange} name="danhGia" className="form-control" id="danhGia" placeholder="Đánh giá" />
+                    </div>
 
                     <button type="submit" className="btn btn-warning ">Thêm phim</button>
                 </form>
@@ -97,12 +98,16 @@ class FormThemPhim extends Component {
     }
 }
 
-
+const mapStateToProps = state => {
+    return {
+        err: state.addFilmReducer.err,
+    }
+}
 const mapDispatchToProps = (dispatch) => {
     return {
-        addFilm: (data, token) => {
-            dispatch(Action.actAddFilmAPI(data, token))
+        addFilm: (data) => {
+            dispatch(Action.actAddFilmAPI(data))
         }
     }
 }
-export default connect(null, mapDispatchToProps)(FormThemPhim)
+export default connect(mapStateToProps, mapDispatchToProps)(FormThemPhim)
