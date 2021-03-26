@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Label } from "../../../styled/styled";
 import * as Action from "../../../redux/modules/QuanLyPhim/ThemPhimReducer/action"
+import { actSuaPhimAPI } from '../../../redux/modules/QuanLyPhim/SuaPhimReducer/action'
 import { connect } from 'react-redux';
 class FormThemPhim extends Component {
     constructor(props) {
@@ -22,7 +23,7 @@ class FormThemPhim extends Component {
         let target = e.target;
         if (target.name === 'hinhAnh') {
             this.setState({ hinhAnh: e.target.files[0] }, () => {
-                console.log(this.state);
+                // console.log(this.state);
             });
         } else {
             this.setState({ [e.target.name]: e.target.value })
@@ -37,12 +38,25 @@ class FormThemPhim extends Component {
         }
         this.props.addFilm(frmData)
     }
+    handleSuaPhim = (e) => {
+        e.preventDefault();
+        const { accessToken } = JSON.parse(localStorage.getItem("User"))
+        const frmData = new FormData();
+        for (let key in this.state) {
+            frmData.append(key, this.state[key])
+            // console.log("editFilm",frmData.get(key));
+        }
+        this.props.editFilm(frmData, accessToken);
+    }
     renderNoti() {
-        const { err } = this.props;
+        const { err, editErr } = this.props;
         if (err && err.response.status === 200) {
             return <div className="alert alert-success">{err.response.data}</div>
         } else if (err && err.response.status === 500) {
             return <div className="alert alert-danger">{err.response.data}</div>
+        } 
+        else if (editErr && editErr.response.status === 200){
+            return <div className="alert alert-success">{editErr.response.data}</div>
         }
     }
     render() {
@@ -51,6 +65,10 @@ class FormThemPhim extends Component {
                 <form onSubmit={this.handleSubmit}>
                     {this.renderNoti()}
                     <div className="form-row ">
+                    <div className="form-group col-md-7">
+                            <Label htmlFor="maPhim">Mã phim:</Label>
+                            <input type="text" onChange={this.handleOnChange} name="maPhim" className="form-control" id="maPhim" placeholder="Mã phim" />
+                        </div>
                         <div className="form-group col-md-6">
                             <Label htmlFor="tenPhim">Tên phim:</Label>
                             <input type="text" onChange={this.handleOnChange} name="tenPhim" className="form-control" id="tenPhim" placeholder="Tên phim" />
@@ -88,13 +106,13 @@ class FormThemPhim extends Component {
                     </div>
                     <div className="form-group">
                         <Label htmlFor="danhGia">Đánh giá</Label>
-                        <input type="text" onChange={this.handleOnChange} name="danhGia" className="form-control" id="danhGia" placeholder="Đánh giá" />
+                        <input type="number" onChange={this.handleOnChange} name="danhGia" className="form-control" id="danhGia" placeholder="Đánh giá" min="0" max="10"/>
                     </div>
 
                     <button type="submit" className="btn btn-warning ">Thêm phim</button>
                     <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#ModalXoaPhim">
                         Xóa Phim</button>
-
+                    <button type="button" className="btn btn-primary" onClick={this.handleSuaPhim}>Sửa phim</button>
                 </form>
             </div >
         )
@@ -104,12 +122,16 @@ class FormThemPhim extends Component {
 const mapStateToProps = state => {
     return {
         err: state.addFilmReducer.err,
+        editErr: state.suaPhimReducer.err,
     }
 }
 const mapDispatchToProps = (dispatch) => {
     return {
         addFilm: (data) => {
             dispatch(Action.actAddFilmAPI(data))
+        },
+        editFilm: (frmdata, token) => {
+            dispatch(actSuaPhimAPI(frmdata, token))
         }
     }
 }

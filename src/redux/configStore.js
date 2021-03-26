@@ -16,6 +16,7 @@ import {editUserReducer} from './modules/QuanLyNguoiDung/SuaThongTinReducer/redu
 import {addFilmReducer} from './modules/QuanLyPhim/ThemPhimReducer/reducer'
 import {bookingTicketReducer} from './modules/BookingTicketReducer/reducer'
 import {xoaPhimReducer} from './modules/QuanLyPhim/XoaPhimReducer/reducer'
+import {suaPhimReducer} from './modules/QuanLyPhim/SuaPhimReducer/reducer'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -36,6 +37,7 @@ const rootReducer = combineReducers({
     addFilmReducer,
     bookingTicketReducer,
     xoaPhimReducer,
+    suaPhimReducer,
 })
 
 export const store = createStore(
