@@ -92,6 +92,9 @@ class FormThemPhim extends Component {
                     </div>
 
                     <button type="submit" className="btn btn-warning ">Thêm phim</button>
+                    <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#ModalXoaPhim">
+                        Xóa Phim</button>
+
                 </form>
             </div >
         )
