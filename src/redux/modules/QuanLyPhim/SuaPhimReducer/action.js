@@ -23,6 +23,8 @@ const actSuaPhimRequest = () => {
         type: ActionType.SUA_PHIM_REQUEST,
     }
 }
+
+//Sua phim thanh cong
 const actSuaPhimSuccess = (data) => {
     return {
         type: ActionType.SUA_PHIM_SUCCESS,
