@@ -31,6 +31,8 @@ const actSuaPhimSuccess = (data) => {
         payload: data,
     }
 }
+
+//Sua phim that bai
 const actSuaPhimFailed = (err) => {
     return {
         type: ActionType.SUA_PHIM_FAILED,
