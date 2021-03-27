@@ -17,11 +17,14 @@ export const actSuaPhimAPI = (frmData, token) => {
     }
 }
 
+//Request sua phim
 const actSuaPhimRequest = () => {
     return {
         type: ActionType.SUA_PHIM_REQUEST,
     }
 }
+
+//Sua phim thanh cong
 const actSuaPhimSuccess = (data) => {
     return {
         type: ActionType.SUA_PHIM_SUCCESS,
