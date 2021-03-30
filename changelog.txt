@@ -3,3 +3,5 @@ Update v1:
     + Thiết lập lại Routes cho Admin
     + Chỉnh sửa giao diện của quản lý phim, thêm phim
     + Chỉnh sửa dữ liệu hiển thị của sửa phim
+Update v2:
+    + Chỉnh sửa lại chức năng xóa phim

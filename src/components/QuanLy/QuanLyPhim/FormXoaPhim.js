@@ -4,20 +4,13 @@ import { actXoaPhimAPI } from '../../../redux/modules/QuanLyPhim/XoaPhimReducer/
 import { Label } from '../../../styled/styled'
 
 class FormXoaPhim extends Component {
-    state = {
-        maPhim: 0,
-    }
-    handleOnChange = (e) => {
-        this.setState({
-            maPhim: e.target.value,
-        })
-    }
     handleXoaPhim = (e) => {
         e.preventDefault();
-
         const { accessToken } = JSON.parse(localStorage.getItem("User"))
-        this.props.xoaPhim(this.state.maPhim, accessToken)
-        // console.log("id",this.state.maPhim);
+        if (this.props.phimCanXoa) {
+            this.props.xoaPhim(this.props.phimCanXoa, accessToken)
+        }
+        // console.log("id",this.props.phimCanXoa);
     }
     renderNoti() {
         const { data, err } = this.props;
@@ -39,16 +32,16 @@ class FormXoaPhim extends Component {
                             </button>
                         </div>
                         <div className="modal-body">
-                            <form onSubmit={this.handleXoaPhim}>
+                            <form >
                                 {this.renderNoti()}
                                 <Label htmlfor="maPhim">Mã phim</Label>
                                 <input type="text"
-                                    class="form-control" name="maPhim" id="maPhim" placeholder="Mã Phim" onChange={this.handleOnChange} />
+                                    className="form-control" name="maPhim" id="maPhim" placeholder="Mã Phim" value={this.props.phimCanXoa ? this.props.phimCanXoa : ""} disabled />
                             </form>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" className="btn btn-primary">Save changes</button>
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                            <button type="button" className="btn btn-primary" onClick={this.handleXoaPhim}>Xác nhận</button>
                         </div>
                     </div>
                 </div>
@@ -60,6 +53,7 @@ const mapStateToProps = state => {
     return {
         data: state.xoaPhimReducer.data,
         err: state.xoaPhimReducer.err,
+        phimCanXoa: state.xoaPhimReducer.phimCanXoa,
     }
 }
 const mapDispatchToProps = dispatch => {
