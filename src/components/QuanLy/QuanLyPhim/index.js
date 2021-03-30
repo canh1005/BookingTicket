@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import FormThemPhim from './FormThemPhim'
-import FormXoaPhim from './FormXoaPhim'
+import DanhSachPhim from './DanhSachPhim'
 
 export default class QuanLyPhim extends Component {
     render() {
         return (
             <div>
-                <FormThemPhim/>
-                <FormXoaPhim/>
+                <DanhSachPhim/>
+                {this.props.children}
+                {console.log("dsPhim",this.props)}
             </div>
         )
     }

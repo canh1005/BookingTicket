@@ -9,7 +9,7 @@ export default class Dashboard extends Component {
                         <li className="nav-item ">
                             <Nav className="nav-link text-warning font-weight-bold" to="/AdminHome">Home <span className="sr-only">(current)</span></Nav>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li className="nav-item dropdown">
                             <Nav className="nav-link text-warning font-weight-bold" to="/Dashboard/QuanLyNguoiDung" id="navbar" data-toggle="dropdown">
                                 Quản lý người dùng </Nav>
                             {/* <div class="dropdown-menu">
@@ -19,7 +19,7 @@ export default class Dashboard extends Component {
                                 <NavLink class="dropdown-item" to="#a">Tìm kiếm người dùng</NavLink>
                             </div> */}
                         </li>
-                        <li class="nav-item dropdown">
+                        <li className="nav-item dropdown">
                             <Nav className="nav-link text-warning font-weight-bold" to="/Dashboard/QuanLyPhim" id="navbar" data-toggle="dropdown">
                                 Quản lý phim </Nav>
                             {/* <div class="dropdown-menu">

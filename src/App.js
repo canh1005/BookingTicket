@@ -12,14 +12,15 @@ import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage';
 import Admin from './pages/Admin';
 import { routeAdmin } from './routes';
+// import FormThemPhim from './components/QuanLy/QuanLyPhim/FormThemPhim';
 // import {routeHome} from './routes'
 
 class App extends Component {
   showLayoutAdmin = (routes) => {
     if (routes && routes.length > 0) {
       return routes.map((items, index) => {
+        console.log("a");
         return <Admin key={index} exact={items.exact} path={items.path} Component={items.component} />
-
       })
     }
   }
@@ -33,7 +34,9 @@ class App extends Component {
         <Route path="/register" component={RegisterPage}/>
         <Route path="/boxoffice/:id" component={BoxOfficePage}/>
         <Route path="/profile" component={ProfilePage}/>
+        {/* <Route path="/DashBoard/QuanLyPhim/them" component={FormThemPhim}/> */}
         {this.showLayoutAdmin(routeAdmin)}
+        
         {/* {this.showLayoutHome(routeHome)} */}
         <Route path="" component={PageNotFound} />
       </Switch>

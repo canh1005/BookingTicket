@@ -1,4 +1,4 @@
-import { Avatar, Grid, Paper, Typography } from '@material-ui/core'
+import { Avatar, Box, Grid, Typography } from '@material-ui/core'
 import React, { useState } from 'react'
 import { NavLink, TabPane } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
@@ -53,8 +53,8 @@ export default function CinemaInfo(props) {
     }
     return (
         <Grid container className={cinemaTable.root}>
-            <Grid item xs={5} className={cinemaTable.cinemaInfo}><Paper>{renderCinemaInfo()}</Paper></Grid>
-            <Grid item xs={7} className={cinemaTable.movieByCinema}><Paper>{renderShowTimeByCinema()}</Paper></Grid>
+            <Grid item xs={5} className={cinemaTable.cinemaInfo}><Box>{renderCinemaInfo()}</Box></Grid>
+            <Grid item xs={7} className={cinemaTable.movieByCinema}><Box>{renderShowTimeByCinema()}</Box></Grid>
         </Grid>
     )
 }

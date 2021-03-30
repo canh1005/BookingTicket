@@ -1,10 +1,17 @@
 import api from "../../../../services/api";
-import * as Action from "./constances"
+// import * as Action from "./constances"
+import * as ActionType from '../ListNguoiDungReducer/constances'
 
 export const actSearchUserAPI = (keyword) => {
     return dispatch => {
+        let url = `LayDanhSachNguoiDung`
+
+        if (keyword) {
+            url = `TimKiemNguoiDung?MaNhom=GP01&tuKhoa=${keyword}`
+        }
+
         dispatch(actSearchUserRequest);
-        api.get(`/QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=GP01&tuKhoa=${keyword}`)
+        api.get(`/QuanLyNguoiDung/${url}`)
             .then(rs => {
                 dispatch(actSearchUserSuccess(rs.data));
             })
@@ -16,18 +23,18 @@ export const actSearchUserAPI = (keyword) => {
 
 const actSearchUserRequest = () => {
     return {
-        type: Action.SEARCH_USER_REQUEST,
+        type: ActionType.LIST_USER_REQUEST,
     }
 }
 const actSearchUserSuccess = (keyword) => {
     return {
-        type: Action.SEARCH_USER_SUCCESS,
+        type: ActionType.LIST_USER_SUCCESS,
         payload: keyword,
     }
 }
 const actSearchUserFailed = (err) => {
     return {
-        type: Action.SEARCH_USER_FAILED,
+        type: ActionType.LIST_USER_FAILED,
         payload: err,
     }
 }
