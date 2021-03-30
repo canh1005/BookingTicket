@@ -37,6 +37,12 @@ const actSuaPhimFailed = (err) => {
     return {
         type: ActionType.SUA_PHIM_FAILED,
         payload: err,
+    }
+}
 
+export const actPhimSeDuocSua = (filmEdited) => {
+    return{
+        type: ActionType.PHIM_DUOC_SUA,
+        payload: filmEdited,
     }
 }

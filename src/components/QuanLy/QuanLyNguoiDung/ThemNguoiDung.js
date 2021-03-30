@@ -95,7 +95,7 @@ class ThemNguoiDung extends Component {
                             </div>
                         </div>
                     </fieldset>
-                    <button type="submit" class="btn btn-success">Thêm người dùng</button>
+                    <button type="submit" className="btn btn-success">Thêm người dùng</button>
                 </form>
 
             </div>

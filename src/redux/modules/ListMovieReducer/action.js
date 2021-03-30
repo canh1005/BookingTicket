@@ -1,10 +1,10 @@
 import * as ActionType from './constances'
 import api from './../../../services/api'
 
-export const actListMovieApi = () => {
+export const actListMovieApi = (maNhom) => {
     return dispatch => {
         dispatch(actListMovieRequest());
-        api.get("/QuanLyPhim/LayDanhSachPhim?maNhom=GP01")
+        api.get(`/QuanLyPhim/LayDanhSachPhim?maNhom=${maNhom}`)
             .then(rs => {
                 dispatch(actListMovieSuccess(rs.data));
             })
