@@ -5,6 +5,8 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import { ButtonDelete, ButtonEdit, Nav, } from "../../../styled/styled";
 import { actPhimSeDuocSua } from '../../../redux/modules/QuanLyPhim/SuaPhimReducer/action'
+import { actPhimDuocXoa } from '../../../redux/modules/QuanLyPhim/XoaPhimReducer/action'
+import FormXoaPhim from './FormXoaPhim';
 
 class DanhSachPhim extends Component {
     renderTable = () => {
@@ -22,7 +24,7 @@ class DanhSachPhim extends Component {
                     <td>{phim.danhGia}</td>
                     <td>
                         <ButtonEdit className='btn-info'><Nav to={`/Dashboard/${phim.maPhim}/suaPhim`} onClick={() => this.props.layPhimDuocSua(phim)}><EditIcon /></Nav></ButtonEdit>
-                        <ButtonDelete className='btn-danger'><DeleteOutlineIcon /></ButtonDelete>
+                        <ButtonDelete className='btn-danger' type="button" data-toggle="modal" data-target="#ModalXoaPhim" onClick={() => { this.props.layPhimCanXoa(phim.maPhim) }}><DeleteOutlineIcon /></ButtonDelete>
                     </td>
                 </tr>
             })
@@ -75,6 +77,7 @@ class DanhSachPhim extends Component {
                         {this.renderTable()}
                     </tbody>
                 </table>
+                <FormXoaPhim />
             </div>
         )
     }
@@ -91,6 +94,9 @@ const mapDispatchToProps = dispatch => {
         },
         layPhimDuocSua: phim => {
             dispatch(actPhimSeDuocSua(phim))
+        },
+        layPhimCanXoa: maPhim => {
+            dispatch(actPhimDuocXoa(maPhim))
         }
     }
 }

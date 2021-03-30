@@ -32,3 +32,10 @@ const actXoaPhimFailed = (err) => {
         payload: err,
     }
 }
+
+export const actPhimDuocXoa = maPhim =>{
+    return{
+        type: ActionType.LAY_PHIM_CAN_XOA,
+        payload: maPhim,
+    }
+}

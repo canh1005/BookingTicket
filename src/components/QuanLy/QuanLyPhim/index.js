@@ -7,7 +7,6 @@ export default class QuanLyPhim extends Component {
             <div>
                 <DanhSachPhim/>
                 {this.props.children}
-                {console.log("dsPhim",this.props)}
             </div>
         )
     }
