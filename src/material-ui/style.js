@@ -4,13 +4,16 @@ import { useColor } from './../utils/color'
 export const body = makeStyles({
     root: {
         background: `linear-gradient(45deg, ${useColor.black_1} 30% ,${useColor.red_1} 60%, ${useColor.orange_1} 90%)`,
-        paddingTop: "30px",
+        paddingTop: "150px",
     },
 })
 export const navBar = makeStyles({
     root: {
         zIndex: "1",
         background: `linear-gradient(45deg, ${useColor.red_1} 30% ,${useColor.orange_0} 50%, ${useColor.orange_1} 90%)`,
+        position: "fixed",
+        width: "100%",
+        opacity: .9,
     },
     body: {
         padding: '30px 0',
@@ -36,8 +39,6 @@ export const navBar = makeStyles({
         color: useColor.white_1,
     }
 })
-
-
 export const cardMovie = makeStyles({
     actionArea: {
         borderRadius: 16,
@@ -52,7 +53,7 @@ export const cardMovie = makeStyles({
         borderRadius: 16,
         boxShadow: 'none',
         margin: 50,
-        background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+        background: `linear-gradient(45deg, ${useColor.pink_1} 30%, ${useColor.orange_2} 90%)`,
         '&:hover': {
             boxShadow: `0 6px 6px 0`,
         },
@@ -84,20 +85,43 @@ export const cardMovie = makeStyles({
         backgroundPosition: 'center',
     },
     button: {
-        background: 'linear-gradient(to right, #FF8E53 70%, #FE6B8B)',
+        background: `linear-gradient(to right, ${useColor.orange_2} 70%, ${useColor.pink_1})`,
         borderRadius: 16,
-        border: '1px solid',
+        border: `1px solid ${useColor.green_2}`,
         margin: 2,
-        "&:hover": {
-            background: `linear-gradient(to left, ${useColor.red_1} 70%, ${useColor.orange_0})`,
-        }
+        color: useColor.white_1,
+        overflow: 'hidden',
+        "&:hover $buttonShadow": {
+            transform: 'translateX(0)',
+            opacity: .3,
+        },
+        position: 'relative',
+        "& a": {
+            color: useColor.white_1,
+            "&:hover": {
+                textDecoration: 'none',
+                color: useColor.white_1,
+            },
+        },
+    },
+    buttonShadow: {
+        width: '100%',
+        height: '100%',
+        borderRadius: 16,
+        top: 0,
+        left: 0,
+        background: `linear-gradient(to left, ${useColor.red_1} 70%, ${useColor.orange_0})`,
+        position: 'absolute',
+        opacity: 0,
+        transform: 'translateX(100%)',
+        transition: "all .7s",
     }
 })
-
 export const cinemaStyle = makeStyles({
     root: {
         minHeight: 700,
-        backgroundColor: useColor.white_1,
+        backgroundColor: useColor.orange_3,
+        borderRadius: 16,
     },
     cinemaInfo: {
         height: 700,
@@ -123,9 +147,14 @@ export const cinemaStyle = makeStyles({
         margin: 5,
         borderRadius: 16,
         color: useColor.black_1,
+        transition: 'all .5s',
+        "&:hover":{
+            textDecoration: 'none',
+            color: useColor.green_2,
+        }
     },
     tabPane: {
-        transition: "0.7s",
+        transition: "all 0.7s",
         "&:hover": {
             transform: "scale(0.95)"
         }
@@ -134,7 +163,6 @@ export const cinemaStyle = makeStyles({
         color: useColor.black_1,
     }
 })
-
 export const listMovieStyle = makeStyles({
     root: {
 
@@ -144,7 +172,6 @@ export const listMovieStyle = makeStyles({
         color: useColor.white_1,
     }
 })
-
 export const scrollTopStyle = makeStyles({
     root: {
         position: "fixed",

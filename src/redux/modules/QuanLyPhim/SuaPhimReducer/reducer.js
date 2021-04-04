@@ -3,6 +3,7 @@ import * as ActionType from './constances'
 let initialState = {
     data: null,
     err: null,
+    filmEdited: null,
 }
 
 export const suaPhimReducer = (state = initialState, action) => {
@@ -19,7 +20,10 @@ export const suaPhimReducer = (state = initialState, action) => {
             state.data = null;
             state.err = action.payload;
             return { ...state }
+        case ActionType.PHIM_DUOC_SUA:
+            state.filmEdited = action.payload;
+            return { ...state }
         default:
-            return {...state}
+            return { ...state }
     }
 }

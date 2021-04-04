@@ -1,0 +1,7 @@
+Update v1:
+    + Cập nhật giao diện của homepage
+    + Thiết lập lại Routes cho Admin
+    + Chỉnh sửa giao diện của quản lý phim, thêm phim
+    + Chỉnh sửa dữ liệu hiển thị của sửa phim
+Update v2:
+    + Chỉnh sửa lại chức năng xóa phim

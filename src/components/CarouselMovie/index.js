@@ -12,9 +12,9 @@ import { listMovieStyle } from './../../material-ui/style'
 
 function CarouselMovie(props) {
     const ListMovieStyle = listMovieStyle()
+    const maNhom = "GP01"
     useEffect(() => {
-        // console.log("a");
-        props.fetchListMovie();
+        props.fetchListMovie(maNhom);
         // eslint-disable-next-line react-hooks/exhaustive-deps  
     }, [])
 
@@ -35,7 +35,7 @@ function CarouselMovie(props) {
     return (
         <div id="dsPhim">
             <Typography variant="h2" className={ListMovieStyle.title}>Danh sách phim</Typography>
-            <Slider slidesToShow={3} slidesToScroll={1} rows={2} centerMode={true} infinite={true}>
+            <Slider slidesToShow={3} slidesToScroll={1} rows={2} centerMode={true} infinite={true} className="center">
                 {renderListMovie()}
             </Slider>
         </div>
@@ -52,8 +52,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchListMovie: () => {
-            dispatch(Action.actListMovieApi())
+        fetchListMovie: (maNhom) => {
+            dispatch(Action.actListMovieApi(maNhom))
         }
     }
 }

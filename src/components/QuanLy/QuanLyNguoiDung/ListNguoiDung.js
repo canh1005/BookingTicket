@@ -10,15 +10,8 @@ class ListNguoiDung extends Component {
     }
 
     renderTableListUser = () => {
-        let { data, listSearch } = this.props;
-        if (listSearch) {
-            console.log("a", listSearch);
-            return listSearch.map(user => {
-                return <NguoiDungItem
-                    key={user.taiKhoan}
-                    User={user} />
-            })
-        } else if (data) {
+        let { data } = this.props;
+        if (data) {
             return data.map(user => {
                 return <NguoiDungItem
                     key={user.taiKhoan}
@@ -29,8 +22,8 @@ class ListNguoiDung extends Component {
     render() {
         return (
             <div className='border display-block'>
-                <table class="table border table-bordered table-hover">
-                    <thead class="thead-dark">
+                <table className="table border table-bordered table-hover">
+                    <thead className="thead-dark">
                         <tr>
                             <th scope="col">Họ tên</th>
                             <th scope="col">Email</th>

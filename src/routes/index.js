@@ -1,5 +1,6 @@
 import QuanLyNguoiDung from "../components/QuanLy/QuanLyNguoiDung";
 import QuanLyPhim from "../components/QuanLy/QuanLyPhim";
+import FormThemPhim from "../components/QuanLy/QuanLyPhim/FormThemPhim";
 
 
 const routeAdmin = [
@@ -17,6 +18,16 @@ const routeAdmin = [
         exact: false,
         path: "/Dashboard/QuanLyNguoiDung",
         component: QuanLyNguoiDung,
+    },
+    {
+        exact: false,
+        path: "/Dashboard/themPhim",
+        component: FormThemPhim,
+    },
+    {
+        exact: false,
+        path: "/Dashboard/:id/suaPhim",
+        component: FormThemPhim,
     },
 ]
 
