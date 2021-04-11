@@ -5,3 +5,9 @@ Update v1:
     + Chỉnh sửa dữ liệu hiển thị của sửa phim
 Update v2:
     + Chỉnh sửa lại chức năng xóa phim
+Update v3:
+    + Thêm chức năng tìm kiếm phim với các component:
+        - (thêm searchbarhome,MovieSearchResult)
+        - Chỉnh sửa component navbarhome
+    + Chỉnh sửa giao diện của detail movie page
+    + Thêm routeHome ở thư mục routes

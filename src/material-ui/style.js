@@ -1,17 +1,20 @@
 import { makeStyles } from "@material-ui/core";
 import { useColor } from './../utils/color'
 
+
 export const body = makeStyles({
     root: {
         background: `linear-gradient(45deg, ${useColor.black_1} 30% ,${useColor.red_1} 60%, ${useColor.orange_1} 90%)`,
-        paddingTop: "150px",
+        marginTop: 110,
     },
 })
+//Home navbar
 export const navBar = makeStyles({
     root: {
         zIndex: "1",
         background: `linear-gradient(45deg, ${useColor.red_1} 30% ,${useColor.orange_0} 50%, ${useColor.orange_1} 90%)`,
         position: "fixed",
+        top: 0,
         width: "100%",
         opacity: .9,
     },
@@ -37,8 +40,35 @@ export const navBar = makeStyles({
     },
     text: {
         color: useColor.white_1,
-    }
+    },
+    search: {
+        flexDirection: 'unset',
+        verticalAlign: 'middle',
+    },
+    searchResult: {
+        position: 'absolute',
+        left: 0,
+        top: '90%',
+        minWidth: '300px',
+        height: '400px',
+        backgroundColor: useColor.white_1,
+        overflow: 'auto',
+        '& div': {
+            '& span': {
+                textAlign: 'left',
+                marginLeft: '10%',
+            }
+        }
+    },
+    menu: {
+        color: useColor.black_1,
+        '& a': {
+            textDecoration: 'none',
+            color: useColor.black_1,
+        }
+    },
 })
+//card movie
 export const cardMovie = makeStyles({
     actionArea: {
         borderRadius: 16,
@@ -117,6 +147,7 @@ export const cardMovie = makeStyles({
         transition: "all .7s",
     }
 })
+//list cinema
 export const cinemaStyle = makeStyles({
     root: {
         minHeight: 700,
@@ -148,7 +179,7 @@ export const cinemaStyle = makeStyles({
         borderRadius: 16,
         color: useColor.black_1,
         transition: 'all .5s',
-        "&:hover":{
+        "&:hover": {
             textDecoration: 'none',
             color: useColor.green_2,
         }
@@ -163,6 +194,7 @@ export const cinemaStyle = makeStyles({
         color: useColor.black_1,
     }
 })
+//list movie
 export const listMovieStyle = makeStyles({
     root: {
 
@@ -172,6 +204,7 @@ export const listMovieStyle = makeStyles({
         color: useColor.white_1,
     }
 })
+//back to top
 export const scrollTopStyle = makeStyles({
     root: {
         position: "fixed",
@@ -184,5 +217,44 @@ export const scrollTopStyle = makeStyles({
         color: useColor.black_1,
         fontSize: 50,
         borderRadius: "50%"
+    }
+})
+//detail movie
+export const detailMovieStyle = makeStyles({
+    background: {
+        backgroundImage: props => `url(${props.backgroundImage})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: '100%',
+    },
+    content: {
+        width: "80%",
+        margin: 'auto',
+        color: useColor.green_1,
+    },
+    table: {
+        '& thead': {
+            '& tr': {
+                '& th': {
+                    color: useColor.green_1,
+                }
+            }
+        },
+        '& tbody': {
+            '& tr': {
+                '& td': {
+                    color: useColor.green_1,
+                }
+            }
+        }
+    },
+    button: {
+        '& span': {
+            '& a': {
+                textDecoration: 'none',
+                color: useColor.green_1,
+            }
+        }
     }
 })

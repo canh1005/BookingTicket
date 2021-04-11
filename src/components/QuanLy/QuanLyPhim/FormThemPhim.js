@@ -77,7 +77,7 @@ class FormThemPhim extends Component {
         }
     }
     render() {
-        const { phimDuocSua } = this.props;
+        // const { phimDuocSua } = this.props;
         return (
             <div className="container mt-3">
                 <form onSubmit={this.handleSubmit}>
