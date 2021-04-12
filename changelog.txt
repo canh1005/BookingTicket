@@ -11,3 +11,5 @@ Update v3:
         - Chỉnh sửa component navbarhome
     + Chỉnh sửa giao diện của detail movie page
     + Thêm routeHome ở thư mục routes
+Update v4:
+    + Chỉnh sửa giao diện của trang login và register

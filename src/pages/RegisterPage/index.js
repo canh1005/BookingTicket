@@ -2,9 +2,11 @@ import { Button, Container, FormControl, TextField, Typography } from '@material
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
+import { login } from '../../material-ui/style'
 import { actRegisterAPI } from './../../redux/modules/RegisterReducer/action'
 
 function RegisterPage(props) {
+    const registerStyle = login()
     const [regisAcc, setRegisAcc] = useState({
         taiKhoan: "",
         matKhau: "",
@@ -35,20 +37,23 @@ function RegisterPage(props) {
     }
 
     return (
-        <Container maxWidth="sm">
-            <Typography variant="h1">Đăng ký</Typography>
-            <form onSubmit={handleOnSubmit}>
-                {renderNoti()}
-                <FormControl>
-                    <TextField name="taiKhoan" variant="outlined" label="Tài khoản" onChange={handleOnChange}></TextField>
-                    <TextField name="matKhau" variant="outlined" label="Mật khẩu" onChange={handleOnChange}></TextField>
-                    <TextField name="hoTen" variant="outlined" label="Họ tên" onChange={handleOnChange}></TextField>
-                    <TextField name="email" variant="outlined" label="Email" onChange={handleOnChange}></TextField>
-                    <TextField name="soDt" variant="outlined" label="Số điện thoại" onChange={handleOnChange}></TextField>
-                    <Button type="submit">Đăng ký</Button>
-                </FormControl>
-            </form>
-        </Container>
+        <div className={registerStyle.root}>
+            <Container maxWidth="sm" className={registerStyle.box}>
+                <Typography variant="h1">Đăng ký</Typography>
+                <form onSubmit={handleOnSubmit} >
+                    {renderNoti()}
+                    <FormControl className={registerStyle.form}>
+                        <TextField name="taiKhoan" variant="outlined" label="Tài khoản" onChange={handleOnChange}></TextField>
+                        <TextField name="matKhau" variant="outlined" label="Mật khẩu" onChange={handleOnChange}></TextField>
+                        <TextField name="hoTen" variant="outlined" label="Họ tên" onChange={handleOnChange}></TextField>
+                        <TextField name="email" variant="outlined" label="Email" onChange={handleOnChange}></TextField>
+                        <TextField name="soDt" variant="outlined" label="Số điện thoại" onChange={handleOnChange}></TextField>
+                        <Button type="submit">Đăng ký</Button>
+                    </FormControl>
+                </form>
+            </Container>
+        </div>
+
     )
 }
 
