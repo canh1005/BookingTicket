@@ -258,3 +258,49 @@ export const detailMovieStyle = makeStyles({
         }
     }
 })
+//login, register Style
+export const login = makeStyles({
+    root: {
+        background: `linear-gradient(-24deg, ${useColor.black_1} 0%, ${useColor.white_1} 50%, ${useColor.orange_0} 50%, ${useColor.orange_2} 100%)`,
+        minHeight: 700,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    box: {
+        position: "relative",
+        padding: 50,
+        width: 360,
+        height: '100%',
+        textAlign: 'center',
+        background: 'rgba(255,255,255,0.1)',
+        borderRadius: 6,
+        '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: 5,
+            bottom: 5,
+            left: 5,
+            right: 5,
+            borderRadius: 5,
+            background: `linear-gradient(to bottom, rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.1) 15%, transparent 50%, transparent 85%,rgba(255,255,255,0.3) 100%)`
+        }
+    },
+    button: {
+        color: useColor.black_1,
+        '& a': {
+            textDecoration: 'none',
+            color: useColor.black_1,
+        }
+    },
+    form: {
+        '& div': {
+            padding: 5,
+            '& div':{
+                '& input':{
+                    padding: 5,
+                }
+            }
+        }
+    }
+})
