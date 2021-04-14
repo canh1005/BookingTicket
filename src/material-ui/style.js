@@ -296,11 +296,72 @@ export const login = makeStyles({
     form: {
         '& div': {
             padding: 5,
-            '& div':{
-                '& input':{
+            '& div': {
+                '& input': {
                     padding: 5,
                 }
             }
         }
-    }
+    },
+    iconShowPassword: {
+        position: 'absolute',
+        top: 5,
+        right: 3,
+    },
+})
+//profile page style
+export const Profile = makeStyles({
+    background: {
+        background: `linear-gradient(to right, ${useColor.black_1} 0%, ${useColor.orange_0} 50%, ${useColor.orange_2} 60%, ${useColor.orange_1} 100%)`,
+        minHeight: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    box: {
+        position: 'relative',
+        '&::before': {
+            content: '""',
+            borderRadius: 5,
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            background: `linear-gradient(45deg,${useColor.orange_1} 0%, ${useColor.orange_3} 100%)`,
+        },
+        '&::after': {
+            content: '""',
+            borderRadius: 5,
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            background: `linear-gradient(45deg,${useColor.orange_1} 0%, ${useColor.orange_3} 100%)`,
+            filter: 'blur(30px)',
+        }
+    },
+    span: {
+        position: 'absolute',
+        top: 5,
+        left: 5,
+        bottom: 5,
+        right: 5,
+        background: 'rgba(0,0,0,0.5)',
+        zIndex: 2,
+    },
+    content: {
+        position: 'relative',
+        zIndex: 10,
+        padding: 20,
+        color: useColor.white_1,
+        textAlign: 'center',
+        '& svg':{
+            fontSize: '50vh',
+        }
+    },
+    button: {
+        color: useColor.white_1,
+    },
 })
