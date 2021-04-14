@@ -1,4 +1,4 @@
-import { Button, Container, Dialog, DialogTitle, Grid, Paper, Typography } from '@material-ui/core'
+import { Button, Container, Dialog, DialogTitle, Grid, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@material-ui/core'
 import React from 'react'
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
@@ -30,7 +30,6 @@ function ProfilePage(props) {
     }
     useEffect(() => {
         if (userData) {
-            // console.log("userData", taiKhoan);
             props.fetchProfile(taiKhoan)
 
         }
@@ -60,7 +59,33 @@ function ProfilePage(props) {
     const renderBookingTicketHistory = (thongTinDatVe) => {
         return <Dialog onClose={handleClose} open={open}>
             <DialogTitle >Lịch sử đặt vé</DialogTitle>
-            <Paper>Work!: {thongTinDatVe}</Paper>
+            <Table>
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Tên phim</TableCell>
+                        <TableCell>Ngày đặt</TableCell>
+                        <TableCell>Giá</TableCell>
+                        <TableCell>Tên rạp</TableCell>
+                        <TableCell>Số ghế</TableCell>
+                        <TableCell>Hệ thống rạp</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {thongTinDatVe && thongTinDatVe.map(thongTinVe => {
+                        let ngayDat = thongTinVe.ngayDat.split('T');
+                        return thongTinVe.danhSachGhe.map(thongTinGhe => {
+                            return <TableRow>
+                                <TableCell>{thongTinVe.tenPhim}</TableCell>
+                                <TableCell>{new Date(ngayDat).toLocaleDateString()}</TableCell>
+                                <TableCell>{thongTinVe.giaVe}</TableCell>
+                                <TableCell>{thongTinGhe.tenCumRap}</TableCell>
+                                <TableCell>{thongTinGhe.tenGhe}</TableCell>
+                                <TableCell>{thongTinGhe.tenHeThongRap}</TableCell>
+                            </TableRow>
+                        })
+                    })}
+                </TableBody>
+            </Table>
         </Dialog>
 
     }
