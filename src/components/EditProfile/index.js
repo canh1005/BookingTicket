@@ -6,7 +6,6 @@ import { actEditProfileAPI } from './../../redux/modules/EditProfileReducer/acti
 function EditProfile(props) {
     const { onClose, open, profile } = props;
     const { maLoaiNguoiDung } = JSON.parse(localStorage.getItem("User"))
-    // console.log("MaND", maLoaiNguoiDung);
     const [userEdit, setUserEdit] = useState({
         taiKhoan: "",
         matKhau: "",
@@ -28,9 +27,6 @@ function EditProfile(props) {
             maLoaiNguoiDung: maLoaiNguoiDung,
         })
     }
-
-    // console.log("userEdit ", userEdit);
-    // console.log("profile: ", profile);
     const handleClose = () => {
         onClose();
     }
@@ -49,7 +45,6 @@ function EditProfile(props) {
             [name]: value
         })
     }
-    // console.log("User", userEdit);
     const renderEditProfile = () => {
         if (profile) {
             return <Dialog open={open} onClose={handleClose}>
