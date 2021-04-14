@@ -15,3 +15,5 @@ Update v4:
     + Chỉnh sửa giao diện của trang login và register
 Update v5:
     + Chỉnh sửa giao diện của trang profile
+Update v6:
+    + Sửa chức năng xem lịch sử đặt vé
