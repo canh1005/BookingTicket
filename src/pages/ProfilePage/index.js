@@ -1,11 +1,14 @@
-import { Avatar, Button, Container, Dialog, DialogTitle, Grid, Paper, Typography } from '@material-ui/core'
+import { Button, Container, Dialog, DialogTitle, Grid, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@material-ui/core'
 import React from 'react'
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import EditProfile from '../../components/EditProfile'
 import { actGetProfileAPI } from './../../redux/modules/ProfileReducer/action'
+import AccountBoxSharpIcon from '@material-ui/icons/AccountBoxSharp';
+import { Profile } from '../../material-ui/style'
 
 function ProfilePage(props) {
+    const profileStyle = Profile();
     const userData = JSON.parse(localStorage.getItem('User'));
     const taiKhoan = {
         taiKhoan: userData.taiKhoan,
@@ -27,7 +30,6 @@ function ProfilePage(props) {
     }
     useEffect(() => {
         if (userData) {
-            // console.log("userData", taiKhoan);
             props.fetchProfile(taiKhoan)
 
         }
@@ -37,19 +39,19 @@ function ProfilePage(props) {
         const { profileData } = props;
         if (profileData) {
             console.log("DATA: ", profileData);
-            return <Grid container>
+            return <Grid container className={profileStyle.content}>
                 <Grid item xs={4}>
-                    <Avatar src="" />
+                    <AccountBoxSharpIcon />
                     <Typography>Họ tên: {profileData.hoTen}</Typography>
+                    <Button onClick={handleOpenEditProfile} className={profileStyle.button}>Cập nhật thông tin người dùng</Button>
+                    <EditProfile open={openEditProfile} onClose={handleCloseEditProfile} profile={props.profileData} />
                 </Grid>
                 <Grid item xs={8}>
-                    <Paper>
-                        <Typography>Tài khoản: {profileData.taiKhoan}</Typography>
-                        <Typography>Email: {profileData.email}</Typography>
-                        <Typography>Số điện thoại: {profileData.soDT}</Typography>
-                        <Button onClick={handleClickOpen}>Xem lịch sử đặt vé</Button>
-                        {renderBookingTicketHistory(profileData.thongTinDatVe)}
-                    </Paper>
+                    <Typography>Tài khoản: {profileData.taiKhoan}</Typography>
+                    <Typography>Email: {profileData.email}</Typography>
+                    <Typography>Số điện thoại: {profileData.soDT}</Typography>
+                    <Button onClick={handleClickOpen} className={profileStyle.button}>Xem lịch sử đặt vé</Button>
+                    {renderBookingTicketHistory(profileData.thongTinDatVe)}
                 </Grid>
             </Grid>
         }
@@ -57,17 +59,45 @@ function ProfilePage(props) {
     const renderBookingTicketHistory = (thongTinDatVe) => {
         return <Dialog onClose={handleClose} open={open}>
             <DialogTitle >Lịch sử đặt vé</DialogTitle>
-            <Paper>Work!: {thongTinDatVe}</Paper>
+            <Table>
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Tên phim</TableCell>
+                        <TableCell>Ngày đặt</TableCell>
+                        <TableCell>Giá</TableCell>
+                        <TableCell>Tên rạp</TableCell>
+                        <TableCell>Số ghế</TableCell>
+                        <TableCell>Hệ thống rạp</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {thongTinDatVe && thongTinDatVe.map(thongTinVe => {
+                        let ngayDat = thongTinVe.ngayDat.split('T');
+                        return thongTinVe.danhSachGhe.map(thongTinGhe => {
+                            return <TableRow>
+                                <TableCell>{thongTinVe.tenPhim}</TableCell>
+                                <TableCell>{new Date(ngayDat).toLocaleDateString()}</TableCell>
+                                <TableCell>{thongTinVe.giaVe}</TableCell>
+                                <TableCell>{thongTinGhe.tenCumRap}</TableCell>
+                                <TableCell>{thongTinGhe.tenGhe}</TableCell>
+                                <TableCell>{thongTinGhe.tenHeThongRap}</TableCell>
+                            </TableRow>
+                        })
+                    })}
+                </TableBody>
+            </Table>
         </Dialog>
 
     }
     return (
-        <Container fixed>
-            {renderProfile()}
-            <Button onClick={handleOpenEditProfile}>Cập nhật thông tin người dùng</Button>
-            <EditProfile open={openEditProfile} onClose={handleCloseEditProfile} profile={props.profileData}/>
-            {props.children}
-        </Container>
+        <div className={profileStyle.background}>
+            <Container maxWidth='lg' className={profileStyle.box}>
+                <span className={profileStyle.span}></span>
+                {renderProfile()}
+                {props.children}
+            </Container>
+        </div>
+
     )
 }
 const mapStateToProps = state => {

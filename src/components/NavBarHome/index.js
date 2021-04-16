@@ -3,7 +3,6 @@ import { HashLink } from 'react-router-hash-link'
 import { navBar } from './../../material-ui/style'
 import logo from './../../assets/web-logo.png'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
 import React from 'react'
 import Button from '@material-ui/core/Button';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
@@ -14,6 +13,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { connect } from 'react-redux'
 import { actLogout } from './../../redux/modules/LoginReducer/action'
+import SearchBarHome from '../SearchBarHome';
 
 
 function NavBarHome(props) {
@@ -64,9 +64,9 @@ function NavBarHome(props) {
                                 <Paper>
                                     <ClickAwayListener onClickAway={handleClose}>
                                         <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                                            {User.maLoaiNguoiDung === "QuanTri" && <MenuItem onClick={handleClose}><Link to="/AdminHome">Dashboard</Link></MenuItem>}
-                                            <MenuItem onClick={handleClose}><Link to="/profile">Profile</Link></MenuItem>
-                                            <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                                            {User.maLoaiNguoiDung === "QuanTri" && <MenuItem className={classes.menu} onClick={handleClose}><Link to="/AdminHome">Dashboard</Link></MenuItem>}
+                                            <MenuItem className={classes.menu} onClick={handleClose}><Link to="/profile">Profile</Link></MenuItem>
+                                            <MenuItem className={classes.menu} onClick={handleLogout}>Logout</MenuItem>
                                         </MenuList>
                                     </ClickAwayListener>
                                 </Paper>
@@ -88,8 +88,9 @@ function NavBarHome(props) {
             <div className={classes.body}>
                 <NavLink to='/'><img width='50' src={logo} alt='' /></NavLink>
                 <div>
-                    <HashLink className={classes.link} to='#dsPhim'>Danh sách phim</HashLink>
+                    <HashLink smooth className={classes.link} to='#dsPhim'>Danh sách phim</HashLink>
                     <HashLink smooth className={classes.link} to='#cumRap'>Cụm rạp</HashLink>
+                    <SearchBarHome />
                 </div>
                 {renderNavBarHome()}
             </div>
