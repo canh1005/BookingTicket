@@ -31,10 +31,11 @@ export const navBar = makeStyles({
         textDecoration: "none",
         color: useColor.white_1,
         margin: '0 5px',
+        transition: 'all 0.5s',
         "&:hover": {
             textDecoration: "none",
             fontWeight: "bold",
-            fontSize: "20px",
+            fontSize: "17px",
             color: useColor.white_1,
         }
     },
@@ -196,12 +197,32 @@ export const cinemaStyle = makeStyles({
 })
 //list movie
 export const listMovieStyle = makeStyles({
-    root: {
-
+    root:{
+        minHeight: '700px',
     },
     title: {
         textAlign: "center",
         color: useColor.white_1,
+    },
+    navMovie: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        border: 'none',
+        fontSize: '20px',
+        '& a': {
+            transition: 'all 0.5s',
+            color: useColor.white_1,
+            border: 'none!important',
+            '&.active': {
+                backgroundColor: 'transparent!important',
+                border: 'none',
+                color: `${useColor.pink_1}!important`,
+            },
+            '&:hover': {
+                border: 'none',
+                transform: 'scale(1.1)'
+            }
+        }
     }
 })
 //back to top
@@ -357,7 +378,7 @@ export const Profile = makeStyles({
         padding: 20,
         color: useColor.white_1,
         textAlign: 'center',
-        '& svg':{
+        '& svg': {
             fontSize: '50vh',
         }
     },
