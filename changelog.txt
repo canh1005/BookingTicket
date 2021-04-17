@@ -17,3 +17,5 @@ Update v5:
     + Chỉnh sửa giao diện của trang profile
 Update v6:
     + Sửa chức năng xem lịch sử đặt vé
+Update v7:
+    + Thêm chức năng phim đang chiếu và phim sắp chiếu
