@@ -121,9 +121,9 @@ export const cardMovie = makeStyles({
     card: ({
         minWidth: 300,
         minHeight: 400,
-        borderRadius: 16,
+        borderRadius: '16px!important',
         margin: '0 10px',
-        background: 'rgba(255,255,255,0.5)',
+        background: 'rgba(255,255,255,0.5)!important',
         boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
         backdropFilter: 'blur(10px)'
     }),
