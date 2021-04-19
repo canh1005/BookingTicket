@@ -25,7 +25,6 @@ export default function Movie(props) {
                     <Button className={button}>
                         <Link to={`/detail/${movie.maPhim}`}>Chi Tiết<Button className={buttonShadow} ></Button></Link>
                     </Button>
-
                     <Button className={button} onClick={() => setOpen(true)}>Trailer
                     <Button className={buttonShadow}></Button>
                     </Button>
