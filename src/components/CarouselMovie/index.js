@@ -23,8 +23,8 @@ function CarouselMovie(props) {
     const renderListMovie = () => {
         const { data } = props;
         if (data && data.length > 0) {
-            let startDay = moment().format('YYYY-MM-DD');
-            let endDay = moment().add(1, 'months').format('YYYY-MM-DD');
+            let endDay = moment().format('YYYY-MM-DD');
+            let startDay = moment().subtract(1, 'months').format('YYYY-MM-DD');
             data.map(movie => {
                 if (moment(moment(movie.ngayKhoiChieu).format('YYYY-MM-DD')).isBetween(startDay, endDay)) {
                     return phimDangChieu.push(movie);
@@ -56,12 +56,12 @@ function CarouselMovie(props) {
             <Typography variant="h2" className={ListMovieStyle.title}>Danh sách phim</Typography>
             <Tabs defaultActiveKey="phimDangChieu" className={ListMovieStyle.navMovie}>
                 <Tab eventKey="phimDangChieu" title="Phim đang chiếu">
-                    <Slider slidesToShow={3} slidesToScroll={1} rows={phimDangChieu.length > 6 ? 2 : 1} centerMode={true} infinite={true} className="center">
+                    <Slider slidesToShow={3} slidesToScroll={1} rows={phimDangChieu.length > 6 ? 2 : 1} centerMode={true} infinite={phimDangChieu.length > 6 ? true : false} className="center">
                         {renderCurrentMovie()}
                     </Slider>
                 </Tab>
                 <Tab eventKey="phimSapChieu" title="Phim sắp chiếu">
-                    <Slider slidesToShow={3} slidesToScroll={1} rows={phimSapChieu.length > 6 ? 2 : 1} centerMode={true} infinite={true} className="center">
+                    <Slider slidesToShow={3} slidesToScroll={1} rows={phimSapChieu.length > 6 ? 2 : 1} centerMode={true} infinite={phimSapChieu.length > 6 ? true : false} className="center">
                         {renderUpcomingMovie()}
                     </Slider>
                 </Tab>
