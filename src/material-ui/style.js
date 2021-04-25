@@ -31,10 +31,11 @@ export const navBar = makeStyles({
         textDecoration: "none",
         color: useColor.white_1,
         margin: '0 5px',
+        transition: 'all 0.5s',
         "&:hover": {
             textDecoration: "none",
             fontWeight: "bold",
-            fontSize: "20px",
+            fontSize: "17px",
             color: useColor.white_1,
         }
     },
@@ -42,8 +43,8 @@ export const navBar = makeStyles({
         color: useColor.white_1,
     },
     search: {
-        flexDirection: 'unset',
-        verticalAlign: 'middle',
+        flexDirection: 'unset!important',
+        verticalAlign: 'middle!important',
     },
     searchResult: {
         position: 'absolute',
@@ -73,20 +74,58 @@ export const cardMovie = makeStyles({
     actionArea: {
         borderRadius: 16,
         transition: '0.2s',
+        margin: '50px 0',
         '&:hover': {
             transform: 'scale(1.1)',
+        },
+        '&::before': {
+            display: 'block',
+            position: 'absolute',
+            content: '""',
+            width: '100%',
+            height: '100%',
+            borderRadius: 8,
+            background: 'rgba(255,255,255,0.1)',
+            backdropFilter: 'blur(10px)',
+            zIndex: 10,
+            opacity: 0,
+            transition: 'all 0.5s'
+        },
+        '&::after': {
+            display: 'block',
+            position: 'absolute',
+            content: '""',
+            width: '100%',
+            height: '100%',
+            borderRadius: 8,
+            background: 'rgba(255,255,255,0.1)',
+            backdropFilter: 'blur(10px)',
+            transition: 'all 0.5s',
+            opacity: 0,
+        },
+        '&:hover::before': {
+            width: 70,
+            height: 70,
+            top: -20,
+            left: 50,
+            opacity: 1,
+        },
+        '&:hover::after': {
+            width: 70,
+            height: 70,
+            bottom: -20,
+            right: 50,
+            opacity: 1,
         },
     },
     card: ({
         minWidth: 300,
         minHeight: 400,
-        borderRadius: 16,
-        boxShadow: 'none',
-        margin: 50,
-        background: `linear-gradient(45deg, ${useColor.pink_1} 30%, ${useColor.orange_2} 90%)`,
-        '&:hover': {
-            boxShadow: `0 6px 6px 0`,
-        },
+        borderRadius: '16px!important',
+        margin: '0 10px',
+        background: 'rgba(255,255,255,0.5)!important',
+        boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
+        backdropFilter: 'blur(10px)'
     }),
     content: {
         padding: '1rem 1.5rem 1.5rem',
@@ -121,6 +160,7 @@ export const cardMovie = makeStyles({
         margin: 2,
         color: useColor.white_1,
         overflow: 'hidden',
+        zIndex: 20,
         "&:hover $buttonShadow": {
             transform: 'translateX(0)',
             opacity: .3,
@@ -145,7 +185,7 @@ export const cardMovie = makeStyles({
         opacity: 0,
         transform: 'translateX(100%)',
         transition: "all .7s",
-    }
+    },
 })
 //list cinema
 export const cinemaStyle = makeStyles({
@@ -197,11 +237,31 @@ export const cinemaStyle = makeStyles({
 //list movie
 export const listMovieStyle = makeStyles({
     root: {
-
+        minHeight: '700px',
     },
     title: {
         textAlign: "center",
         color: useColor.white_1,
+    },
+    navMovie: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        border: 'none',
+        fontSize: '20px',
+        '& a': {
+            transition: 'all 0.5s',
+            color: useColor.white_1,
+            border: 'none!important',
+            '&.active': {
+                backgroundColor: 'transparent!important',
+                border: 'none',
+                color: `${useColor.pink_1}!important`,
+            },
+            '&:hover': {
+                border: 'none',
+                transform: 'scale(1.1)'
+            }
+        }
     }
 })
 //back to top
@@ -357,7 +417,7 @@ export const Profile = makeStyles({
         padding: 20,
         color: useColor.white_1,
         textAlign: 'center',
-        '& svg':{
+        '& svg': {
             fontSize: '50vh',
         }
     },
