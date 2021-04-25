@@ -3,6 +3,7 @@ import * as Action from '../../../redux/modules/QuanLyNguoiDung/ListNguoiDungRed
 
 import { connect } from 'react-redux';
 import NguoiDungItem from "./NguoiDungItem";
+import { Table } from '../../../styled/styled';
 
 class ListNguoiDung extends Component {
     componentDidMount() {
@@ -22,11 +23,11 @@ class ListNguoiDung extends Component {
     render() {
         return (
             <div className='border display-block'>
-                <table className="table border table-bordered table-hover">
+                <Table className="table border table-bordered table-hover table-layout-fixed;">
                     <thead className="thead-dark">
                         <tr>
                             <th scope="col">Họ tên</th>
-                            <th scope="col">Email</th>
+                            <th scope="col" colSpan="2">Email</th>
                             <th scope="col">Tài khoản</th>
                             <th scope="col">Mật khẩu</th>
                             <th scope="col">Số điện thoại</th>
@@ -37,7 +38,7 @@ class ListNguoiDung extends Component {
                     <tbody>
                         {this.renderTableListUser()}
                     </tbody>
-                </table>
+                </Table>
             </div>
         )
     }

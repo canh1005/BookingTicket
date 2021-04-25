@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { actListMovieApi } from '../../../redux/modules/ListMovieReducer/action'
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
-import { ButtonDelete, ButtonEdit, Nav, } from "../../../styled/styled";
+import { ButtonDelete, ButtonEdit, Nav, Table, TD, } from "../../../styled/styled";
 import { actPhimSeDuocSua } from '../../../redux/modules/QuanLyPhim/SuaPhimReducer/action'
 import { actPhimDuocXoa } from '../../../redux/modules/QuanLyPhim/XoaPhimReducer/action'
 import FormXoaPhim from './FormXoaPhim';
@@ -14,18 +14,18 @@ class DanhSachPhim extends Component {
         if (danhSachPhimDaThem) {
             return danhSachPhimDaThem.map(phim => {
                 return <tr key={phim.maPhim}>
-                    <td>{phim.maPhim}</td>
-                    <td>{phim.tenPhim}</td>
-                    <td>{phim.trailer}</td>
-                    <td>{phim.hinhAnh}</td>
-                    <td>{phim.moTa}</td>
-                    <td>{phim.maNhom}</td>
-                    <td>{phim.ngayKhoiChieu}</td>
-                    <td>{phim.danhGia}</td>
-                    <td>
-                        <ButtonEdit className='btn-info'><Nav to={`/Dashboard/${phim.maPhim}/suaPhim`} onClick={() => this.props.layPhimDuocSua(phim)}><EditIcon /></Nav></ButtonEdit>
+                    <TD>{phim.maPhim}</TD>
+                    <TD>{phim.tenPhim}</TD>
+                    <TD>{phim.trailer}</TD>
+                    <TD>{phim.hinhAnh}</TD>
+                    <TD colSpan="2">{phim.moTa}</TD>
+                    <TD>{phim.maNhom}</TD>
+                    <TD>{phim.ngayKhoiChieu}</TD>
+                    <TD>{phim.danhGia}</TD>
+                    <TD>
+                        <ButtonEdit className='btn-info'><Nav className="text-white" to={`/Dashboard/${phim.maPhim}/suaPhim`} onClick={() => this.props.layPhimDuocSua(phim)}><EditIcon /></Nav></ButtonEdit>
                         <ButtonDelete className='btn-danger' type="button" data-toggle="modal" data-target="#ModalXoaPhim" onClick={() => { this.props.layPhimCanXoa(phim.maPhim) }}><DeleteOutlineIcon /></ButtonDelete>
-                    </td>
+                    </TD>
                 </tr>
             })
         }
@@ -59,14 +59,14 @@ class DanhSachPhim extends Component {
                     </div>
                 </div>
                 <Nav to="/Dashboard/themPhim">Thêm phim</Nav>
-                <table className="table border table-bordered table-hover">
+                <Table className="table border table-bordered table-hover">
                     <thead className="thead-dark">
                         <tr>
                             <th scope="col">Mã phim</th>
                             <th scope="col">Tên phim</th>
                             <th scope="col">Trailer</th>
                             <th scope="col">Hình ảnh</th>
-                            <th scope="col">Mô tả</th>
+                            <th colSpan="2" scope="col">Mô tả</th>
                             <th scope="col">Mã nhóm</th>
                             <th scope="col">Ngày khởi chiều</th>
                             <th scope="col">Đánh giá</th>
@@ -76,7 +76,7 @@ class DanhSachPhim extends Component {
                     <tbody>
                         {this.renderTable()}
                     </tbody>
-                </table>
+                </Table>
                 <FormXoaPhim />
             </div>
         )
