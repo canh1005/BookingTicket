@@ -39,7 +39,7 @@ class ThemNguoiDung extends Component {
     render() {
         // console.log("Token: ", this.user.accessToken);
         return (
-            <div className='container mt-3'>
+            <div className='container'>
                 <form onSubmit={this.handleSubmit}>
 
                     <div className="form-group row">

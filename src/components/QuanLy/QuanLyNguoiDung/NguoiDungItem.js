@@ -5,6 +5,7 @@ import { ButtonDelete, ButtonEdit, } from "../../../styled/styled";
 import { actGetUserEdited } from '../../../redux/modules/QuanLyNguoiDung/SuaThongTinReducer/action'
 import { actDeleteUserAPI } from '../../../redux/modules/QuanLyNguoiDung/XoaNguoiDungReducer/action'
 import { connect } from 'react-redux';
+import {TD} from "../../../styled/styled"
 
 class NguoiDungItem extends Component {
 
@@ -18,13 +19,13 @@ class NguoiDungItem extends Component {
         const { User } = this.props;
         return (
             <tr key={User.taiKhoan}>
-                <td>{User.hoTen}</td>
-                <td>{User.email}</td>
-                <td>{User.taiKhoan}</td>
-                <td>{User.matKhau}</td>
-                <td>{User.soDt}</td>
-                <td>{User.maLoaiNguoiDung}</td>
-                <td>
+                <TD>{User.hoTen}</TD>
+                <TD colSpan="2">{User.email}</TD>
+                <TD>{User.taiKhoan}</TD>
+                <TD>{User.matKhau}</TD>
+                <TD>{User.soDt}</TD>
+                <TD>{User.maLoaiNguoiDung}</TD>
+                <TD>
                     <ButtonEdit className='btn-info'
                         data-toggle="modal"
                         data-target="#modalEditUser"
@@ -34,7 +35,7 @@ class NguoiDungItem extends Component {
                     <ButtonDelete onClick={() => { this.handleOnClick(User) }} className='btn-danger' data-toggle='modal' data-tagert="#deleteUserModal">
                         <DeleteOutlineIcon />
                     </ButtonDelete>
-                </td>
+                </TD>
             </tr>
         )
     }
