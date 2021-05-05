@@ -28,12 +28,12 @@ export const bookingTicketReducer = (state = initialState, action) => {
             } else {
                 let thongTinGhe = {
                     maGhe: action.payload.maGhe,
-                    giaVe: action.payload.giaVe
+                    giaVe: action.payload.giaVe,
+                    tenGhe: action.payload.tenGhe,
                 }
                 danhSachVeDangDatUpdate.push(thongTinGhe)
             }
             state.danhSachVeDangDat = danhSachVeDangDatUpdate;
-            console.log("AP", state.danhSachVeDangDat);
             return { ...state }
         default:
             return { ...state }

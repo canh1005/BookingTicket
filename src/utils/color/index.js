@@ -8,5 +8,6 @@ export const useColor = {
     white_1: "#FFF",
     green_1: "#98ce2e",
     green_2: "#5cb85c",
-    pink_1: "#FE6B8B"
+    pink_1: "#FE6B8B",
+    gray_1: '#2F4F4F',
 }

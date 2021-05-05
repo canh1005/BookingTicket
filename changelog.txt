@@ -22,3 +22,6 @@ Update v7:
 Update v8:
     + Cập nhật giao diện homepage
     + Sửa chức năng phim đang chiếu và phim sắp chiếu
+Update v9:
+    + Cập nhật giao diện lịch chiếu trong tuần cho detail movie
+    + Cập nhật giao diện của phòng vé
