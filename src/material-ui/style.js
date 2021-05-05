@@ -47,7 +47,7 @@ export const navBar = makeStyles({
         verticalAlign: 'middle!important',
     },
     searchResult: {
-        position: 'absolute',
+        position: 'absolute!important',
         left: 0,
         top: '90%',
         minWidth: '300px',
@@ -286,37 +286,86 @@ export const detailMovieStyle = makeStyles({
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        height: '100%',
+        minHeight: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute!important',
+        '&::before': {
+            content: '""',
+            position: 'absolute',
+            background: 'rgba(0,0,0,0.5)',
+            display: 'block',
+            height: '100%',
+            width: '100%',
+        },
     },
     content: {
-        width: "80%",
-        margin: 'auto',
-        color: useColor.green_1,
+        width: '80%',
+        color: useColor.red_1,
+        position: 'relative',
     },
-    table: {
-        '& thead': {
-            '& tr': {
-                '& th': {
-                    color: useColor.green_1,
-                }
-            }
+    listCinema: {
+        flexDirection: 'column',
+        border: 'none',
+        width: '50px',
+        '& .active': {
+            borderRadius: '50%',
+            backgroundColor: `${useColor.black_1}!important`,
         },
-        '& tbody': {
-            '& tr': {
-                '& td': {
-                    color: useColor.green_1,
-                }
-            }
+        '& a:hover': {
+            borderRadius: '50%',
+        }
+    },
+    week: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        border: 'none',
+        position: 'relative',
+        '& a': {
+            color: useColor.red_1,
+            fontSize: '1.5rem'
+        },
+        '& .active': {
+            color: `${useColor.pink_1}!important`,
+            fontSize: '1.5rem',
+            backgroundColor: `${useColor.black_1}!important`,
+        }
+    },
+    tabContent: {
+        '& p': {
+            margin: '5px 0',
         }
     },
     button: {
-        '& span': {
-            '& a': {
-                textDecoration: 'none',
-                color: useColor.green_1,
-            }
+        color: useColor.red_1,
+        borderRadius: 16,
+        padding: 5,
+        border: `solid 2px ${useColor.red_1}`,
+        '&:hover': {
+            textDecoration: 'none',
+            color: useColor.green_2,
+            border: `solid 2px ${useColor.green_2}`,
         }
-    }
+    },
+    showTimes: {
+        background: useColor.black_1,
+        opacity: 0.7,
+        marginTop: 10,
+        padding: 20,
+        position: 'relative',
+        borderRadius: 16,
+        '&::before': {
+            content: '""',
+            position: 'absolute',
+            background: useColor.white_1,
+            top: 5,
+            bottom: 5,
+            right: 5,
+            left: 5,
+            filter: 'blur(10px)',
+        },
+    },
 })
 //login, register Style
 export const login = makeStyles({
@@ -423,5 +472,30 @@ export const Profile = makeStyles({
     },
     button: {
         color: useColor.white_1,
+    },
+})
+//box office
+export const Chair = makeStyles({
+    gheDaDat: {
+        pointerEvents: 'unset!important',
+        background: 'red',
+        color: `${useColor.white_1}!important`,
+        cursor: 'no-drop!important',
+        margin: 5,
+        '&:hover': {
+            color: `${useColor.white_1}!important`,
+            background: 'red!important',
+        }
+    },
+    gheChuaDat: {
+        pointerEvents: 'unset!important',
+        background: 'blue',
+        margin: 5,
+        color: `${useColor.white_1}!important`,
+        cursor: 'pointer!important',
+        '&:hover': {
+            color: `${useColor.black_1}!important`,
+            background: 'blue!important',
+        }
     },
 })

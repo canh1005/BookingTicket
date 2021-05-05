@@ -5,7 +5,7 @@ import { Route } from 'react-router'
 
 function Home(props) {
     return (
-        <div>
+        <div style={{ position: 'absolute', width: '100%', height: '100%' }}>
             <NavBarHome />
             {props.children}
         </div>

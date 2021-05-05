@@ -5,12 +5,12 @@ export const actBoxOfficeAPI = (maLichChieu) => {
     return dispatch => {
         dispatch(actBoxOfficeRequest());
         api.get(`/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`)
-        .then(rs=>{
-            dispatch(actBoxOfficeSuccess(rs.data));
-        })
-        .catch(err=>{
-            dispatch(actBoxOfficeFailed(err));
-        })
+            .then(rs => {
+                dispatch(actBoxOfficeSuccess(rs.data));
+            })
+            .catch(err => {
+                dispatch(actBoxOfficeFailed(err));
+            })
     }
 }
 

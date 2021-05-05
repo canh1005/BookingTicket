@@ -18,7 +18,6 @@ function Showtimes(props) {
     const { listCinema } = props;
     if (listCinema && listCinema.length > 0) {
       return listCinema.map(cinema => {
-        // console.log(JSON.stringify(cinema.logo));
         return <Tab eventKey={cinema.maHeThongRap} key={cinema.maHeThongRap} title={<Avatar src={cinema.logo}></Avatar>}>
         </Tab>
       })
@@ -29,15 +28,11 @@ function Showtimes(props) {
   }
   const renderCinemaInfo = () => {
     const { cinemaInfo } = props;
-    // console.log("", cinemaInfo.lstCumRap);
     if (cinemaInfo) {
-      console.log("", cinemaInfo);
       return cinemaInfo.map(cinemaInfo => {
-        // return <CinemaInfo cinema={cinemaInfo}/>
         return <TabPane eventKey={cinemaInfo.maHeThongRap} key={cinemaInfo.maHeThongRap}>
           <CinemaInfo cinema={cinemaInfo}></CinemaInfo>
         </TabPane>
-        // return <Avatar src={cinemaInfo.logo}></Avatar>
       })
     }
   }
