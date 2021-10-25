@@ -104,7 +104,7 @@ class ThemNguoiDung extends Component {
     }
     render() {
         return (
-            <div className='container mt-3'>
+            <div className='container'>
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group row">
                         <Label htmlFor="inputTaiKhoan" className="col-sm-2 col-form-label">Tài khoản:</Label>

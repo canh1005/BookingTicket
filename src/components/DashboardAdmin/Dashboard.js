@@ -10,9 +10,16 @@ class Dashboard extends Component {
         this.props.logOut(this.props.history)
     }
     render() {
+        console.log("abc", this.state);
         return (
             <DashboardStyle>
-                <nav className="navbar navbar-expand-sm">
+                {/* <div className="text-center mt-2 d-block">
+                    <NavLink to="/">
+                        <img width="50px" src={logo} alt=""></img>
+                    </NavLink>
+                </div> */}
+
+                <nav className="navbar d-block">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item ">
                             <Nav className="nav-link text-warning font-weight-bold" to="/AdminHome"><HomeIcon/> <span className="sr-only">(current)</span></Nav>
@@ -28,6 +35,7 @@ class Dashboard extends Component {
                     </ul>
                     <button className="btn btn-secondary" onClick={this.handleLogout}><LogoutIcon /></button>
                 </nav>
+
             </DashboardStyle>
         )
     }

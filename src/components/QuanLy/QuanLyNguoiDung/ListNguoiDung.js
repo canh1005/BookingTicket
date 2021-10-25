@@ -3,6 +3,7 @@ import * as Action from '../../../redux/modules/QuanLyNguoiDung/ListNguoiDungRed
 
 import { connect } from 'react-redux';
 import NguoiDungItem from "./NguoiDungItem";
+import { Table } from '../../../styled/styled';
 
 class ListNguoiDung extends Component {
     renderTableListUser = () => {

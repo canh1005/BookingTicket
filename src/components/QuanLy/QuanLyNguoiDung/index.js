@@ -10,7 +10,6 @@ export default class QuanLyNguoiDung extends Component {
     render() {
         return (
             <QuanLyTemplate>
-
                 <div className=''>
                     <div className=''>
                         <ThemNguoiDung />
