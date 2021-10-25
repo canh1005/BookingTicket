@@ -17,9 +17,9 @@ class DanhSachPhim extends Component {
                 return <tr key={phim.maPhim}>
                     <TD>{phim.maPhim}</TD>
                     <TD>{phim.tenPhim}</TD>
-                    <TD>{phim.trailer}</TD>
+                    <TD style={{wordSpacing:'space-break'}}>{phim.trailer}</TD>
                     <TD>{phim.hinhAnh}</TD>
-                    <TD colSpan="2">{phim.moTa}</TD>
+                    <TD>{phim.moTa}</TD>
                     <TD>{phim.maNhom}</TD>
                     <TD>{phim.ngayKhoiChieu}</TD>
                     <TD>{phim.danhGia}</TD>
@@ -62,7 +62,7 @@ class DanhSachPhim extends Component {
                     </div>
                     <Nav to="/Dashboard/themPhim" className="btn btn-primary" style={{ fontSize: '16px', color: 'white',padding:'5px 10px',margin:'0 5px' }}>Thêm phim <AddIcon/></Nav>
                 </div>
-                <div className="">
+                <div className=""  style={{maxWidth:"100vw",maxHeight:'700px',overflow:'scroll'}}>
                     <table className="table border table-bordered table-hover">
                         <thead className="thead-dark">
                             <tr>
@@ -82,25 +82,6 @@ class DanhSachPhim extends Component {
                         </tbody>
                     </table>
                 </div>
-                <Nav to="/Dashboard/themPhim">Thêm phim</Nav>
-                <Table className="table border table-bordered table-hover">
-                    <thead className="thead-dark">
-                        <tr>
-                            <th scope="col">Mã phim</th>
-                            <th scope="col">Tên phim</th>
-                            <th scope="col">Trailer</th>
-                            <th scope="col">Hình ảnh</th>
-                            <th colSpan="2" scope="col">Mô tả</th>
-                            <th scope="col">Mã nhóm</th>
-                            <th scope="col">Ngày khởi chiều</th>
-                            <th scope="col">Đánh giá</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.renderTable()}
-                    </tbody>
-                </Table>
                 <FormXoaPhim />
             </div>
         )

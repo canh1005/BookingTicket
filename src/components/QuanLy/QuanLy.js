@@ -23,11 +23,11 @@ export default function QuanLy(props) {
         <div>
             {/* <NavbarTop/> */}
             <div className="row">
-                <div className="dashboard col" style={{ width: state ? "80px" : "250px" }}>
+                <div className="dashboard col-1 text-center" >
                     <Dashboard handleHover={HoverHandler} state={state}/>
                 </div>
 
-                <div className="content mr-2 col" id="">
+                <div className="content col-11" id="">
                     {childrenWithProps}
                 </div>
             </div>

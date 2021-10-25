@@ -20,7 +20,7 @@ class NguoiDungItem extends Component {
         return (
             <tr key={User.taiKhoan}>
                 <TD>{User.hoTen}</TD>
-                <TD colSpan="2">{User.email}</TD>
+                <TD>{User.email}</TD>
                 <TD>{User.taiKhoan}</TD>
                 <TD>{User.matKhau}</TD>
                 <TD>{User.soDt}</TD>
