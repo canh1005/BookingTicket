@@ -14,7 +14,7 @@ function MovieSearchResult(props) {
     }, [])
     const renderMovieSearchResult = () => {
         const { searchRS, movieSearchKeyword } = props;
-        console.log(movieSearchKeyword);
+        console.log('aaaaa');
         if (searchRS && searchRS.length > 0 && !movieSearchKeyword) {
             return searchRS.map(movie => {
                 return <Grid item xs={3} key={movie.maPhim}>

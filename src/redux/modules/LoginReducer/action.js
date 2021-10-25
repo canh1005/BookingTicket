@@ -9,11 +9,16 @@ export const actLoginAPI = (user, history) => {
         api.post("/QuanLyNguoiDung/DangNhap", user)
             .then(rs => {
                 dispatch(actLoginSuccess(rs.data))
-                if(rs.data.maLoaiNguoiDung === "KhachHang" || rs.data.maLoaiNguoiDung === "QuanTri"){
+                if(rs.data.maLoaiNguoiDung === "KhachHang"){
                     setHeader(rs.data.accessToken);
                     localStorage.setItem("User",JSON.stringify(rs.data))
                     history.replace("/home");
-                }else{
+                }else if(rs.data.maLoaiNguoiDung === "QuanTri"){
+                    setHeader(rs.data.accessToken);
+                    localStorage.setItem("User",JSON.stringify(rs.data))
+                    history.replace("/AdminHome")
+                }
+                else{
                     return{
                         response: {data: "Tài khoản hoặc mật khẩu không đúng!"}
                     }

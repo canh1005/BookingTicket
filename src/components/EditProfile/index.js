@@ -47,7 +47,7 @@ function EditProfile(props) {
     }
     const renderEditProfile = () => {
         if (profile) {
-            return <Dialog open={open} onClose={handleClose}>
+            return <Dialog open={open} onClose={handleClose} style={{padding:'10px'}}>
                 <DialogTitle>Cập nhật thông tin</DialogTitle>
                 <Box>
                     <form onSubmit={handleSubmit}>
@@ -60,8 +60,8 @@ function EditProfile(props) {
                         </FormControl>
                     </form>
                 </Box>
-                <Button type="submit" onClick={handleSubmit}>Cập nhật</Button>
-                <Button onClick={handleClose}>Close</Button>
+                <button className="btn btn-info my-2" type="submit" onClick={handleSubmit}>Cập nhật</button>
+                <button className="btn btn-danger my-2" onClick={handleClose}>Close</button>
             </Dialog>
         }
     }

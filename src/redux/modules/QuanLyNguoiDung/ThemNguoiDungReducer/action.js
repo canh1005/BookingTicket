@@ -10,7 +10,7 @@ export const actThemNguoiDungAPI = (data, token) => {
             .then(rs => {
                 dispatch(actThemNguoiDungSuccess(rs.data))
                 dispatch(actListUserAPI());
-                alert("Thêm thành công !")
+                alert("Thêm người dùng thành công !")
             })
             .catch(err => {
                 dispatch(actThemNguoiDungFailed(err))

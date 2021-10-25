@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
 import { DashboardStyle, Nav } from '../../styled/styled';
-import logo from './../../assets/web-logo.png'
-import PeopleIcon from '@material-ui/icons/People';
-import MovieCreationIcon from '@material-ui/icons/MovieCreation';
-import HomeIcon from '@material-ui/icons/Home';
-import MenuIcon from '@material-ui/icons/Menu';
-import "./Dashboard.css";
-import { Menu } from '@material-ui/core';
-
-export default class Dashboard extends Component {
-    state = { stateProps: this.props.state };
-    UNSAFE_componentWillReceiveProps(nextProps){
-        this.setState({
-            stateProps: nextProps.state,
-        })
+import LogoutIcon from '@mui/icons-material/Logout';
+import { connect } from 'react-redux';
+import { actLogout } from '../../redux/modules/LoginReducer/action';
+import { withRouter } from 'react-router';
+import HomeIcon from '@mui/icons-material/Home';
+class Dashboard extends Component {
+    handleLogout=()=>{
+        this.props.logOut(this.props.history)
     }
     render() {
         console.log("abc", this.state);
@@ -27,44 +21,31 @@ export default class Dashboard extends Component {
 
                 <nav className="navbar d-block">
                     <ul className="navbar-nav mr-auto">
-                        <li className="li-dashboard nav-item ">
-                            <Nav to="/">
-                                <span id="icon">
-                                    <img width="50px" src={logo} alt="" ></img>
-                                </span>
-                                <span className="title-logo font-weight-bold" style={{ display: this.state.stateProps ? "none" : "block" }}>TIX.VN</span>
-                            </Nav>
+                        <li className="nav-item ">
+                            <Nav className="nav-link text-warning font-weight-bold" to="/AdminHome"><HomeIcon/> <span className="sr-only">(current)</span></Nav>
                         </li>
-                        <li className="li-dashboard nav-item ">
-                            <Nav className=" font-weight-bold" to="/">
-                                <span id="icon"><HomeIcon /></span>
-                                <span className="title"  style={{ display: this.state.stateProps ? "none" : "block" }}>Home</span></Nav>
+                        <li className="nav-item dropdown">
+                            <Nav className="nav-link text-warning font-weight-bold" to="/Dashboard/QuanLyNguoiDung" id="navbar" data-toggle="dropdown">
+                                Quản lý người dùng </Nav>
                         </li>
-                        <li className="li-dashboard nav-item dropdown">
-                            <Nav className=" font-weight-bold" to="/Dashboard/QuanLyNguoiDung" id="navbar" data-toggle="dropdown">
-                                <span id="icon"><PeopleIcon /></span>
-                                <span className="title"  style={{ display: this.state.stateProps ? "none" : "block" }}>Quản lý người dùng</span>
-                            </Nav>
-
-                        </li>
-
-                        <li className="li-dashboard nav-item dropdown">
-                            <Nav className=" font-weight-bold" to="/Dashboard/QuanLyPhim" id="navbar" data-toggle="dropdown">
-                                <span id="icon"><MovieCreationIcon /></span>
-                                <span className="title"  style={{ display: this.state.stateProps ? "none" : "block" }}>Quản lý phim </span>
-                            </Nav>
-                        </li>
-                        <li onClick={() => { this.props.handleHover() }} className="li-dashboard nav-item dropdown ">
-                            <span id="toggle">
-                                <MenuIcon />
-                            </span>
+                        <li className="nav-item dropdown">
+                            <Nav className="nav-link text-warning font-weight-bold" to="/Dashboard/QuanLyPhim" id="navbar" data-toggle="dropdown">
+                                Quản lý phim </Nav>
                         </li>
                     </ul>
+                    <button className="btn btn-secondary" onClick={this.handleLogout}><LogoutIcon /></button>
                 </nav>
 
-
             </DashboardStyle>
-
         )
     }
 }
+const mapDispatchToProps = dispatch => {
+    return{
+        logOut: (history)=>{
+            dispatch(actLogout(history))
+        }
+    }
+}
+const navBarAdminComplete = connect(null, mapDispatchToProps)(Dashboard)
+export default withRouter(navBarAdminComplete)

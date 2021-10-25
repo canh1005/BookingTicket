@@ -18,13 +18,13 @@ class FormThemPhim extends Component {
             danhGia: 0
         }
     }
-    componentDidMount(){
-        if(this.props.phimDuocSua){
+    componentDidMount() {
+        if (this.props.phimDuocSua) {
             this.setState({
                 ...this.props.phimDuocSua,
             })
         }
-    } 
+    }
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.phimDuocSua && prevProps.phimDuocSua.maPhim !== prevState.maPhim) {
             this.setState({
@@ -32,6 +32,8 @@ class FormThemPhim extends Component {
                 ...prevProps.phimDuocSua,
             })
         }
+    }
+    componentWillUnmount() {
     }
     user = JSON.parse(localStorage.getItem("User"));
     handleOnChange = (e) => {
@@ -85,7 +87,7 @@ class FormThemPhim extends Component {
                     <div className="form-row ">
                         <div className="form-group col-md-7">
                             <Label htmlFor="maPhim">Mã phim:</Label>
-                            <input type="text" onChange={this.handleOnChange} name="maPhim" className="form-control" id="maPhim" placeholder="Mã phim" value={this.state.maPhim} />
+                            <input type="text" onChange={this.handleOnChange} name="maPhim" className="form-control" id="maPhim" placeholder="Mã phim" value={this.state.maPhim} disabled />
                         </div>
                         <div className="form-group col-md-6">
                             <Label htmlFor="tenPhim">Tên phim:</Label>
@@ -127,10 +129,10 @@ class FormThemPhim extends Component {
                         <input type="number" onChange={this.handleOnChange} name="danhGia" className="form-control" id="danhGia" placeholder="Đánh giá" min="0" max="10" value={this.state.danhGia} />
                     </div>
 
-                    <button type="submit" className="btn btn-warning ">Thêm phim</button>
-                    <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#ModalXoaPhim">
-                        Xóa Phim</button>
-                    <button type="button" className="btn btn-primary" onClick={this.handleSuaPhim}>Sửa phim</button>
+                    <button type="submit" className="btn btn-warning mr-2">Thêm phim</button>
+                    {/* <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#ModalXoaPhim">
+                        Xóa Phim</button> */}
+                    <button type="button" className="btn btn-primary" onClick={this.handleSuaPhim} disabled={this.state.maPhim === 0}>Sửa phim</button>
                 </form>
             </div >
         )

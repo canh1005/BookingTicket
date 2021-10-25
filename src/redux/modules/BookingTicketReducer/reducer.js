@@ -30,6 +30,7 @@ export const bookingTicketReducer = (state = initialState, action) => {
                     maGhe: action.payload.maGhe,
                     giaVe: action.payload.giaVe,
                     tenGhe: action.payload.tenGhe,
+                    daDat: 'dangDat',
                 }
                 danhSachVeDangDatUpdate.push(thongTinGhe)
             }

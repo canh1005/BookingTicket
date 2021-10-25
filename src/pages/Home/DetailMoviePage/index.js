@@ -18,11 +18,16 @@ function DetailMoviePage(props) {
     const detailMoviestyle = detailMovieStyle(prop);
     const [weekKey, setweekKey] = useState(moment().format('YYYY-MM-DD'));
     const [cinemaKey, setcinemaKey] = useState('BHDStar');
+    let id = props.match.params.id;
     useEffect(() => {
-        let id = props.match.params.id;
         props.fetchDetailMovie(id);
         // eslint-disable-next-line react-hooks/exhaustive-deps  
-    }, [])
+    },[])
+    //Update component when id change
+    useEffect(() => {
+        props.fetchDetailMovie(id);
+        // eslint-disable-next-line react-hooks/exhaustive-deps  
+    }, [id])
     const showDetailMovie = () => {
         if (detailMovieData) {
             return <Grid container spacing={3}>
@@ -96,7 +101,7 @@ function DetailMoviePage(props) {
     }
     const renderMovieShowTimes = (lichChieu) => {
         if (!lichChieu) {
-            return <></>
+            return <div>Không có suất chiếu</div>
         }
         lichChieu = Object.entries(lichChieu);
         return lichChieu.map(item => {
@@ -119,20 +124,23 @@ function DetailMoviePage(props) {
     }
     return (
         <div className={detailMoviestyle.background}>
-            <div className={detailMoviestyle.content}>
-                {showDetailMovie()}
-                <div className={detailMoviestyle.showTimes}>
-                    <Tabs activeKey={weekKey} onSelect={k => setweekKey(k)} className={detailMoviestyle.week}>
-                        {renderWeek()}
-                    </Tabs>
-                    <div className="row">
-                        <div className='col-2'>
-                            <Tabs activeKey={cinemaKey} onSelect={k => setcinemaKey(k)} className={detailMoviestyle.listCinema}>
-                                {renderListCinema()}
-                            </Tabs>
-                        </div>
-                        <div className='col-10'>
-                            {renderTabContent()}
+            {/* <Link to="/" className="text-white d-flex items-center" style={{position:'relative',margin:'0 10px',textDecoration:'none'}}><HomeIcon/>Home</Link> */}
+            <div className="d-flex justify-content-center" style={{padding:'100px 0'}}>
+                <div className={detailMoviestyle.content}>
+                    {showDetailMovie()}
+                    <div className={detailMoviestyle.showTimes}>
+                        <Tabs activeKey={weekKey} onSelect={k => setweekKey(k)} className={detailMoviestyle.week}>
+                            {renderWeek()}
+                        </Tabs>
+                        <div className="row">
+                            <div className='col-2'>
+                                <Tabs activeKey={cinemaKey} onSelect={k => setcinemaKey(k)} className={detailMoviestyle.listCinema}>
+                                    {renderListCinema()}
+                                </Tabs>
+                            </div>
+                            <div className='col-10'>
+                                {renderTabContent()}
+                            </div>
                         </div>
                     </div>
                 </div>

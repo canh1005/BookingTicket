@@ -6,6 +6,7 @@ import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import { ButtonDelete, ButtonEdit, Nav, Table, TD, } from "../../../styled/styled";
 import { actPhimSeDuocSua } from '../../../redux/modules/QuanLyPhim/SuaPhimReducer/action'
 import { actPhimDuocXoa } from '../../../redux/modules/QuanLyPhim/XoaPhimReducer/action'
+import AddIcon from '@mui/icons-material/Add';
 import FormXoaPhim from './FormXoaPhim';
 
 class DanhSachPhim extends Component {
@@ -47,16 +48,39 @@ class DanhSachPhim extends Component {
         this.props.layDanhSachPhim(maNhom);
     }
     render() {
-        console.log("dsPhimChild", this.props);
+        // console.log("dsPhimChild", this.props);
         return (
             <div>
-                <div className="dropdown">
-                    <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Mã nhóm
-                </button>
-                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        {this.rendermaNhom()}
+                <div className="d-flex items-center">
+                    <div className="dropdown">
+                        <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Mã nhóm
+                        </button>
+                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            {this.rendermaNhom()}
+                        </div>
                     </div>
+                    <Nav to="/Dashboard/themPhim" className="btn btn-primary" style={{ fontSize: '16px', color: 'white',padding:'5px 10px',margin:'0 5px' }}>Thêm phim <AddIcon/></Nav>
+                </div>
+                <div className="">
+                    <table className="table border table-bordered table-hover">
+                        <thead className="thead-dark">
+                            <tr>
+                                <th scope="col">Mã phim</th>
+                                <th scope="col">Tên phim</th>
+                                <th scope="col">Trailer</th>
+                                <th scope="col">Hình ảnh</th>
+                                <th scope="col">Mô tả</th>
+                                <th scope="col">Mã nhóm</th>
+                                <th scope="col">Ngày khởi chiều</th>
+                                <th scope="col">Đánh giá</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.renderTable()}
+                        </tbody>
+                    </table>
                 </div>
                 <Nav to="/Dashboard/themPhim">Thêm phim</Nav>
                 <Table className="table border table-bordered table-hover">

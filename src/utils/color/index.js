@@ -10,4 +10,6 @@ export const useColor = {
     green_2: "#5cb85c",
     pink_1: "#FE6B8B",
     gray_1: '#2F4F4F',
+    purple_1: '#8B008B',
+    purple_2: '#4B0082',
 }

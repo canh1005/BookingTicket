@@ -1,10 +1,10 @@
 import * as ActionType from "./constances"
 import api from "../../../../services/api";
 
-export const actListUserAPI = () => {
+export const actListUserAPI = (maNhom) => {
     return dispatch => {
         dispatch(actListUserRequest());
-        api.get("/QuanLyNguoiDung/LayDanhSachNguoiDung")
+        api.get(`/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${maNhom}`)
             .then(rs => {
                 dispatch(actListUserSuccess(rs.data))
             })

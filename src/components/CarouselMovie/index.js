@@ -37,6 +37,9 @@ function CarouselMovie(props) {
         }
     }
     const renderCurrentMovie = () => {
+        if(phimDangChieu.length <= 0){
+            return <div className="text-white">Hiện tại chưa có phim đang chiếu</div>
+        }
         return phimDangChieu.map(movie => {
             return <div key={movie.maPhim}>
                 <Movie movie={movie} />
@@ -44,6 +47,9 @@ function CarouselMovie(props) {
         })
     }
     const renderUpcomingMovie = () => {
+        if(phimSapChieu.length <= 0){
+            return <div className="text-white">Hiện tại chưa có phim sắp chiếu</div>
+        }
         return phimSapChieu.map(movie => {
             return <div key={movie.maPhim}>
                 <Movie movie={movie} />

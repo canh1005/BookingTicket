@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { actSearchMovieAPI, actSearchKeyword } from '../../redux/modules/SearchMovieReducer/action'
 import { Nav } from '../../styled/styled'
 import { withRouter } from 'react-router';
+import { NavLink } from 'react-router-dom';
 
 function SearchBarHome(props) {
     const searchStyle = navBar();
@@ -14,9 +15,11 @@ function SearchBarHome(props) {
         const { searchResult } = props;
         if (keyword && keyword !== '' && searchResult && searchResult.length > 0) {
             return searchResult.map(item => {
-                return <ListItemText className="row" key={item.maPhim}>
-                    <img src={item.hinhAnh} width="30px" alt="" className="col-3 p-0" />
-                    <Nav className="col-9" to={`/detail/${item.maPhim}`}>{item.tenPhim}</Nav>
+                return <ListItemText className="" key={item.maPhim}>
+                    <div className="row">
+                        <img src={item.hinhAnh} width="30px" alt="" className="col-3 p-0" />
+                        <NavLink className={searchStyle.searchItemsLink + " col-9"} to={`/detail/${item.maPhim}`} onClick={() => props.getKeyword('')}>{item.tenPhim}</NavLink>
+                    </div>
                 </ListItemText>
             })
         } else if (keyword !== '' && keyword) {
