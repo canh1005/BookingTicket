@@ -2,12 +2,12 @@ import api from "../../../../services/api";
 // import * as Action from "./constances"
 import * as ActionType from '../ListNguoiDungReducer/constances'
 
-export const actSearchUserAPI = (keyword) => {
+export const actSearchUserAPI = (maNhom,keyword) => {
     return dispatch => {
         let url = `LayDanhSachNguoiDung`
 
         if (keyword) {
-            url = `TimKiemNguoiDung?MaNhom=GP01&tuKhoa=${keyword}`
+            url = `TimKiemNguoiDung?MaNhom=${maNhom}&tuKhoa=${keyword}`
         }
 
         dispatch(actSearchUserRequest);

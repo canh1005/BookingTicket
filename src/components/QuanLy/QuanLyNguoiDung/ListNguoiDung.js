@@ -3,8 +3,16 @@ import * as Action from '../../../redux/modules/QuanLyNguoiDung/ListNguoiDungRed
 
 import { connect } from 'react-redux';
 import NguoiDungItem from "./NguoiDungItem";
+import QuanLyNguoiDung from '.';
+import SearchBar from './../../QuanLy/QuanLyNguoiDung/SearchBar'
 
 class ListNguoiDung extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            maNhom: '',
+        }
+    }
     renderTableListUser = () => {
         let { data } = this.props;
         if (data) {
@@ -17,26 +25,32 @@ class ListNguoiDung extends Component {
     }
     rendermaNhom = () => {
         let dropDownItems = [];
-        for(let i = 1; i <= 9; i++){
+        for (let i = 1; i <= 9; i++) {
             let maNhom = `GP0${i}`;
-            dropDownItems.push(<li><button className="dropdown-item" onClick={()=>{this.handleOnClick(maNhom)}}>{maNhom}</button></li>)
+            dropDownItems.push(<li><button className="dropdown-item" onClick={() => { this.handleOnClick(maNhom) }}>{maNhom}</button></li>)
         }
         return dropDownItems;
     }
-    
+
     handleOnClick(maNhom) {
         this.props.fetchlistUser(maNhom);
+        this.setState({
+            maNhom: maNhom,
+        })
     }
     render() {
         return (
             <div>
-                <div className="dropdown">
-                    <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Mã nhóm
-                    </button>
-                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        {this.rendermaNhom()}
+                <div className="d-flex justify-content-between">
+                    <div className="dropdown">
+                        <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Mã nhóm
+                        </button>
+                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            {this.rendermaNhom()}
+                        </div>
                     </div>
+                    <SearchBar manhom={this.state.maNhom} />
                 </div>
                 <div className='border display-block' style={{ overflowY: "scroll", maxHeight: "400px" }}>
                     <table className="table border table-bordered table-hover">

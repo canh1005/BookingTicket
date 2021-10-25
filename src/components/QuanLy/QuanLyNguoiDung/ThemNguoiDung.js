@@ -7,13 +7,15 @@ class ThemNguoiDung extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            taiKhoan: '',
-            matKhau: '',
-            hoTen: '',
-            soDt: '',
-            maLoaiNguoiDung: '',
-            maNhom: '',
-            email: '',
+            values: {
+                taiKhoan: '',
+                matKhau: '',
+                hoTen: '',
+                soDt: '',
+                maLoaiNguoiDung: '',
+                maNhom: '',
+                email: '',
+            },
             errs: {
                 taiKhoan: '',
                 matKhau: '',
@@ -38,17 +40,24 @@ class ThemNguoiDung extends Component {
     handleOnChange = (e) => {
         const { name, value } = e.target;
         this.setState({
-            [name]: value,
+            values: {
+                ...this.state.values,
+                [name]: value,
+            }
         });
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.fetchaddUser(this.state, this.user.accessToken)
+        this.props.fetchaddUser(this.state.values, this.user.accessToken);
+        console.log('a',this.state.values);
     }
     handleRadioChange = (e) => {
 
         this.setState({
-            maLoaiNguoiDung: e.target.value,
+            values:{
+                ...this.state.values,
+                maLoaiNguoiDung: e.target.value,
+            }
         })
 
     }
@@ -67,7 +76,7 @@ class ThemNguoiDung extends Component {
                 emailValid = mess !== "" ? false : true;
                 if (value !== "") {
                     mess = checkEmail(value);
-                }else{
+                } else {
                     emailValid = false;
                 }
                 break;
@@ -86,7 +95,7 @@ class ThemNguoiDung extends Component {
             default:
                 break;
         }
-        if(this.state.maLoaiNguoiDung !== ""){
+        if (this.state.maLoaiNguoiDung !== "") {
             maLoaiNguoiDungValid = true;
         }
         this.setState({
@@ -100,49 +109,56 @@ class ThemNguoiDung extends Component {
             maNhomValid,
             hoTenValid,
             frmValid: taiKhoanValid && matKhauValid && emailValid && soDtValid && maNhomValid && maLoaiNguoiDungValid && hoTenValid,
-        },()=>{console.log('aaaa',this.state);})
+        })
+    }
+    Noti=()=>{
+        const {err} = this.props;
+        if(err){
+            return <div className="alert alert-danger">{err.response.data}</div>
+        }
     }
     render() {
         return (
             <div className='container mt-3'>
                 <form onSubmit={this.handleSubmit}>
+                    {this.Noti()}
                     <div className="form-group row">
                         <Label htmlFor="inputTaiKhoan" className="col-sm-2 col-form-label">Tài khoản:</Label>
                         <div className="col-sm-10">
-                            <input type="text" name='taiKhoan' className="form-control" id="inputTaiKhoan" placeholder="Tên tài khoản" onChange={this.handleOnChange} onBlur={this.handleErrors}/>
+                            <input type="text" name='taiKhoan' className="form-control" id="inputTaiKhoan" placeholder="Tên tài khoản" onChange={this.handleOnChange} onBlur={this.handleErrors} />
                             {this.state.errs.taiKhoan ? <div className="alert alert-danger">{this.state.errs.taiKhoan}</div> : ""}
                         </div>
                     </div>
                     <div className="form-group row">
                         <Label htmlFor="inputMatKhau" className="col-sm-2 col-form-label">Mật khẩu:</Label>
                         <div className="col-sm-10">
-                            <input type="password" name='matKhau' className="form-control" id="inputMatKhau" placeholder="Mật khẩu" onChange={this.handleOnChange} onBlur={this.handleErrors}/>
+                            <input type="password" name='matKhau' className="form-control" id="inputMatKhau" placeholder="Mật khẩu" onChange={this.handleOnChange} onBlur={this.handleErrors} />
                             {this.state.errs.matKhau ? <div className="alert alert-danger">{this.state.errs.matKhau}</div> : ""}
                         </div>
                     </div>
                     <div className="form-group row">
                         <Label htmlFor="inputHoTen" className="col-sm-2 col-form-label">Họ Tên:</Label>
                         <div className="col-sm-10">
-                            <input type="text" name='hoTen' className="form-control" id="inputHoTen" placeholder="Họ Tên" onChange={this.handleOnChange} onBlur={this.handleErrors}/>
+                            <input type="text" name='hoTen' className="form-control" id="inputHoTen" placeholder="Họ Tên" onChange={this.handleOnChange} onBlur={this.handleErrors} />
                             {this.state.errs.hoTen ? <div className="alert alert-danger">{this.state.errs.hoTen}</div> : ""}
                         </div>
                     </div>
                     <div className="form-group row">
                         <Label htmlFor="inputEmail" className="col-sm-2 col-form-label">Email:</Label>
                         <div className="col-sm-5">
-                            <input type="email" name='email' className="form-control" id="inputEmail" placeholder="Email" onChange={this.handleOnChange} onBlur={this.handleErrors}/>
+                            <input type="email" name='email' className="form-control" id="inputEmail" placeholder="Email" onChange={this.handleOnChange} onBlur={this.handleErrors} />
                             {this.state.errs.email ? <div className="alert alert-danger">{this.state.errs.email}</div> : ""}
                         </div>
                         <Label htmlFor="inputPhoneNumber" className="col-sm-2 col-form-label">Số điện thoại:</Label>
                         <div className="col-sm-3">
-                            <input type="tel" name='soDt' className="form-control" id="inputPhoneNumber" placeholder="Số điện thoại" onChange={this.handleOnChange} onBlur={this.handleErrors}/>
+                            <input type="tel" name='soDt' className="form-control" id="inputPhoneNumber" placeholder="Số điện thoại" onChange={this.handleOnChange} onBlur={this.handleErrors} />
                             {this.state.errs.soDt ? <div className="alert alert-danger">{this.state.errs.soDt}</div> : ""}
                         </div>
                     </div>
                     <div className="form-group row">
                         <Label htmlFor="inputMaNhom" className="col-sm-2 col-form-label">Mã nhóm:</Label>
                         <div className="col-sm-3">
-                            <input type="text" name='maNhom' className="form-control" id="inputMaNhom" placeholder="Mã nhóm" onChange={this.handleOnChange} onBlur={this.handleErrors}/>
+                            <input type="text" name='maNhom' className="form-control" id="inputMaNhom" placeholder="Mã nhóm" onChange={this.handleOnChange} onBlur={this.handleErrors} />
                             {this.state.errs.maNhom ? <div className="alert alert-danger">{this.state.errs.maNhom}</div> : ""}
                         </div>
                     </div>
@@ -151,13 +167,13 @@ class ThemNguoiDung extends Component {
                             <legend className="col-form-label col-sm-3 pt-0 font-weight-bold">Loại người dùng</legend>
                             <div className="col-sm-9">
                                 <div className="form-check form-check-inline">
-                                    <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios1" defaultValue="KhachHang" defaultChecked={this.state.maLoaiNguoiDung === "KhachHang"} onChange={this.handleRadioChange} onClick={this.handleErrors}/>
+                                    <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios1" defaultValue="KhachHang" defaultChecked={this.state.values.maLoaiNguoiDung === "KhachHang"} onChange={this.handleRadioChange} onClick={this.handleErrors} />
                                     <label className="form-check-label" htmlFor="gridRadios1">
                                         Khách Hàng
                                     </label>
                                 </div>
                                 <div className="form-check form-check-inline">
-                                    <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios2" defaultValue="QuanTri" checked={this.state.maLoaiNguoiDung === "QuanTri"} onChange={this.handleRadioChange} onClick={this.handleErrors}/>
+                                    <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios2" defaultValue="QuanTri" checked={this.state.values.maLoaiNguoiDung === "QuanTri"} onChange={this.handleRadioChange} onClick={this.handleErrors} />
                                     <label className="form-check-label" htmlFor="gridRadios2">
                                         Quản trị
                                     </label>
@@ -172,6 +188,11 @@ class ThemNguoiDung extends Component {
         )
     }
 }
+const mapStateToProps = (state) =>{
+    return{
+        err: state.addUserReducer.err,
+    }
+}
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchaddUser: (data, token) => {
@@ -180,4 +201,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(ThemNguoiDung)
+export default connect(mapStateToProps, mapDispatchToProps)(ThemNguoiDung)

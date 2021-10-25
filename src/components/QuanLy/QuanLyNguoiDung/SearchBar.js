@@ -4,11 +4,12 @@ import { connect } from "react-redux";
 
 class SearchBar extends Component {
     render() {
+        console.log('aa',this.props);
         return (
-            <div className='d-flex justify-content-end'>
+            <div className=''>
                 <nav className="navbar navbar-light bg-light">
                     <form className="form-inline">
-                        <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={(e) => { this.props.search(e.target.value) }} />
+                        <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={(e) => { this.props.search(this.props.manhom,e.target.value) }} />
                         <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form>
                 </nav>
@@ -19,8 +20,8 @@ class SearchBar extends Component {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        search: (keyword) => {
-            dispatch(actSearchUserAPI(keyword))
+        search: (maNhom,keyword) => {
+            dispatch(actSearchUserAPI(maNhom,keyword))
         }
     }
 }
