@@ -11,7 +11,7 @@ export const body = makeStyles({
 //Home navbar
 export const navBar = makeStyles({
     root: {
-        zIndex: "1",
+        zIndex: "100",
         background: `linear-gradient(45deg, ${useColor.red_1} 30% ,${useColor.orange_0} 50%, ${useColor.orange_1} 90%)`,
         position: "fixed",
         top: 0,
@@ -68,6 +68,16 @@ export const navBar = makeStyles({
             color: useColor.black_1,
         }
     },
+    searchItemsLink: {
+        color: useColor.black_1,
+        fontSize: '16px',
+        fontWeight: '600',
+        whiteSpace: 'break-spaces',
+        '&:hover': {
+            color: useColor.gray_1,
+            textDecoration: 'none',
+        }
+    }
 })
 //card movie
 export const cardMovie = makeStyles({
@@ -75,6 +85,7 @@ export const cardMovie = makeStyles({
         borderRadius: 16,
         transition: '0.2s',
         margin: '50px 0',
+        textAlign: 'left',
         '&:hover': {
             transform: 'scale(1.1)',
         },
@@ -133,7 +144,7 @@ export const cardMovie = makeStyles({
     title: {
         fontFamily: 'Montserrat',
         fontSize: '2rem',
-        color: useColor.green_2,
+        color: useColor.purple_2,
         textTransform: 'uppercase',
         overflow: "hidden",
         textOverflow: "ellipsis",
@@ -141,9 +152,16 @@ export const cardMovie = makeStyles({
     },
     subtitle: {
         fontFamily: 'Montserrat',
-        color: useColor.green_2,
-        opacity: 0.87,
+        color: useColor.purple_1,
+        opacity: 0.9,
         marginTop: '2rem',
+        fontWeight: "bold",
+        fontSize: 14,
+    },
+    rate: {
+        fontFamily: 'Montserrat',
+        color: useColor.purple_1,
+        opacity: 0.9,
         fontWeight: "bold",
         fontSize: 14,
     },
@@ -238,6 +256,8 @@ export const cinemaStyle = makeStyles({
 export const listMovieStyle = makeStyles({
     root: {
         minHeight: '700px',
+        textAlign: 'center',
+        paddingTop: '100px',
     },
     title: {
         textAlign: "center",
@@ -287,9 +307,6 @@ export const detailMovieStyle = makeStyles({
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         minHeight: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
         position: 'absolute!important',
         '&::before': {
             content: '""',
@@ -302,7 +319,8 @@ export const detailMovieStyle = makeStyles({
     },
     content: {
         width: '80%',
-        color: useColor.red_1,
+        padding: '100px 0',
+        color: useColor.white_1,
         position: 'relative',
     },
     listCinema: {
@@ -395,8 +413,25 @@ export const login = makeStyles({
             background: `linear-gradient(to bottom, rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.1) 15%, transparent 50%, transparent 85%,rgba(255,255,255,0.3) 100%)`
         }
     },
-    button: {
+    button_lg: {
         color: useColor.black_1,
+        backgroundColor: useColor.green_2,
+        margin: '10px 0',
+        '&:hover': {
+            backgroundColor: useColor.green_1,
+        },
+        '& a': {
+            textDecoration: 'none',
+            color: useColor.black_1,
+        }
+    },
+    button_rg: {
+        color: useColor.black_1,
+        backgroundColor: useColor.orange_2,
+        margin: '10px 0',
+        '&:hover': {
+            backgroundColor: useColor.orange_3,
+        },
         '& a': {
             textDecoration: 'none',
             color: useColor.black_1,
@@ -472,6 +507,11 @@ export const Profile = makeStyles({
     },
     button: {
         color: useColor.white_1,
+        borderColor: useColor.gray_1,
+        background: useColor.black_1,
+        '&:hover': {
+            background: useColor.gray_1,
+        }
     },
 })
 //box office
@@ -496,6 +536,11 @@ export const Chair = makeStyles({
         '&:hover': {
             color: `${useColor.black_1}!important`,
             background: 'blue!important',
+        },
+        '&.active': {
+            color: `${useColor.black_1}!important`,
+            background: 'yellow!important',
         }
     },
 })
+//Loading

@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import BoxOfficePage from './pages/Home/BoxOfficePage';
-import DetailMoviePage from './pages/Home/DetailMoviePage';
+// import DetailMoviePage from './pages/Home/DetailMoviePage';
 import LoginPage from './pages/LoginPage';
 import PageNotFound from './pages/PageNotFound';
 import RegisterPage from './pages/RegisterPage';
-import ProfilePage from './pages/ProfilePage';
+// import ProfilePage from './pages/ProfilePage';
 import Admin from './pages/Admin';
 import { routeAdmin, routeHome } from './routes';
 import MovieSearchResult from './components/MovieSearchResult';
@@ -32,11 +32,11 @@ class App extends Component {
     return (
       <Switch>
         {this.showLayoutHome(routeHome)}
-        <Route path="/detail/:id" component={DetailMoviePage} />
+        {/* <Route path="/detail/:id" component={DetailMoviePage} /> */}
         <Route path="/auth" component={LoginPage} />
         <Route path="/register" component={RegisterPage} />
         <Route path="/boxoffice/:id" component={BoxOfficePage} />
-        <Route path="/profile" component={ProfilePage} />
+        {/* <Route path="/profile" component={ProfilePage} /> */}
         <Route path="/search/:keyword" component={MovieSearchResult} />
         {this.showLayoutAdmin(routeAdmin)}
         <Route path="" component={PageNotFound} />

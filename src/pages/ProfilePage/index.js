@@ -38,7 +38,6 @@ function ProfilePage(props) {
     const renderProfile = () => {
         const { profileData } = props;
         if (profileData) {
-            console.log("DATA: ", profileData);
             return <Grid container className={profileStyle.content}>
                 <Grid item xs={4}>
                     <AccountBoxSharpIcon />

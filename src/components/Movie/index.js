@@ -7,12 +7,13 @@ import { cardMovie } from '../../material-ui/style'
 
 
 export default function Movie(props) {
-    const { actionArea, card, content, title, subtitle, img, button, buttonShadow } = cardMovie();
+    const { actionArea, card, content, title, subtitle, img, button, buttonShadow, rate } = cardMovie();
     const { movie } = props;
     const [isOpen, setOpen] = useState(false)
     const handleClose = () => {
         setOpen(false);
     }
+    let ngayKhoiChieu = movie.ngayKhoiChieu.split('T',1);
     return (
         <CardActionArea className={actionArea}>
             <Card className={card}>
@@ -21,7 +22,8 @@ export default function Movie(props) {
                     <Typography className={title}>
                         {movie.tenPhim}
                     </Typography>
-                    <Typography className={subtitle}>Đánh giá: {movie.danhGia}/10 điểm</Typography>
+                    <Typography className={subtitle}>Ngày khởi chiếu: {ngayKhoiChieu}</Typography>
+                    <Typography className={rate}>Đánh giá: {movie.danhGia}/10 điểm</Typography>
                     <Button className={button}>
                         <Link to={`/detail/${movie.maPhim}`}>Chi Tiết<Button className={buttonShadow} ></Button></Link>
                     </Button>

@@ -8,6 +8,7 @@ export const actAddFilmAPI = (data) => {
         api.post("/QuanLyPhim/ThemPhimUploadHinh", data)
             .then(rs => {
                 dispatch(actAddFilmSuccess(rs.data))
+                alert("Thêm phim thành công!")
             })
             .catch(err => {
                 dispatch(actAddFilmFailed(err))

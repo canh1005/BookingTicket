@@ -5,14 +5,20 @@ import { actBookingTicket } from '../../redux/modules/BookingTicketReducer/actio
 import { Chair } from '../../material-ui/style'
 
 function Ghe(props) {
+    const [gheDangDat, setStateGheDangDat] = React.useState({ active: false })
     const { chair } = props;
     const chairStyle = Chair();
     const handleOnClick = () => {
         props.datGhe(chair);
+        setStateGheDangDat(prevProps => {
+            return { active: !prevProps.active };
+        })
+        console.log("A", gheDangDat);
     }
+    let activeClass = (gheDangDat.active ? ' active' : '');
     const renderChair = () => {
         return <Button
-            className={chair.daDat ? chairStyle.gheDaDat : chairStyle.gheChuaDat}
+            className={chair.daDat ? chairStyle.gheDaDat : chairStyle.gheChuaDat + activeClass}
             disabled={chair.daDat}
             onClick={handleOnClick}>{chair.tenGhe}
         </Button>

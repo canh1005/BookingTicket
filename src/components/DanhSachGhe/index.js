@@ -5,6 +5,7 @@ import Ghe from '../Ghe';
 import { actBookingTicketAPI } from '../../redux/modules/BookingTicketReducer/action'
 import { Link } from 'react-router-dom';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import HomeIcon from '@mui/icons-material/Home';
 
 function DanhSachGhe(props) {
     const { showTimeData, maLichChieu } = props;
@@ -44,11 +45,11 @@ function DanhSachGhe(props) {
         return tongTien;
     }
     return (
-        <Grid container>
+        <Grid container justify={'space-around'} style={{ marginTop: '10px' }}>
             <Grid item xs={8}>
-                <Link style={{ color: 'black' }} to='/'><ArrowBackIosIcon fontSize='small' />Trang chủ</Link>
-                <Typography className="text-center">Màn hình</Typography>
-                <TableContainer>
+                <Link style={{ color: 'black' }} to='/'><ArrowBackIosIcon fontSize='small' /><HomeIcon /> Trang chủ</Link>
+                <Typography className="text-center bg-primary">Màn hình</Typography>
+                <TableContainer style={{ textAlign: 'center' }}>
                     <Table>
                         <TableHead>
 
@@ -59,11 +60,11 @@ function DanhSachGhe(props) {
                     </Table>
                 </TableContainer>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={3} style={{ border: '1px solid black', padding: '10px' }}>
                 <Typography><Button style={{ background: 'red', padding: '10px' }}></Button>Ghế đã đặt</Typography>
-                <Typography ><Button style={{ background: 'yellow', padding: '10px' }}></Button>Ghế đang đặt</Typography>
+                <Typography ><Button style={{ background: 'yellow', padding: '10px' }}></Button>Ghế đang chọn</Typography>
                 <Typography><Button style={{ background: 'blue', padding: '10px' }}></Button>Ghế chưa đặt</Typography>
-                <Typography>Danh sách vé đang đặt</Typography>
+                <Typography style={{ textAlign: 'center', marginTop: '10px' }}>Danh sách vé đang đặt</Typography>
                 <TableContainer>
                     <Table>
                         <TableHead>
@@ -81,7 +82,7 @@ function DanhSachGhe(props) {
                         </TableBody>
                     </Table>
                 </TableContainer>
-                <Button onClick={handleDatVe}>Đặt vé</Button>
+                <button className="btn btn-success mt-2" onClick={handleDatVe} disabled={danhSachVeDangDat.length <= 0 ? true : false}>Đặt vé</button>
             </Grid>
         </Grid>
 

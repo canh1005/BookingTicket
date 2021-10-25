@@ -25,3 +25,11 @@ Update v8:
 Update v9:
     + Cập nhật giao diện lịch chiếu trong tuần cho detail movie
     + Cập nhật giao diện của phòng vé
+Update v10:
+    + Cập nhật giao diện:
+        - Home page
+        - Profile page
+        - Box office
+        - Detail movie page
+    + Chỉnh sửa route khi đăng nhập với tài khoản Admin
+    + Thêm validation cho login, register, thêm người dùng.

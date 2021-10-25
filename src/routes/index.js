@@ -2,7 +2,9 @@ import MovieSearchResult from "../components/MovieSearchResult";
 import QuanLyNguoiDung from "../components/QuanLy/QuanLyNguoiDung";
 import QuanLyPhim from "../components/QuanLy/QuanLyPhim";
 import FormThemPhim from "../components/QuanLy/QuanLyPhim/FormThemPhim";
+import DetailMoviePage from "../pages/Home/DetailMoviePage";
 import HomePage from "../pages/Home/HomePage";
+import ProfilePage from "../pages/ProfilePage";
 
 
 const routeAdmin = [
@@ -48,6 +50,16 @@ const routeHome = [
         path: "/search/:keyword",
         component: MovieSearchResult,
     },
+    {
+        exact: false,
+        path: '/detail/:id',
+        component: DetailMoviePage,
+    },
+    {
+        exact: false,
+        path: '/profile',
+        component: ProfilePage,
+    }
 ]
 
 export {routeAdmin, routeHome}
