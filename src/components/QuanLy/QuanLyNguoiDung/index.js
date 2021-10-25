@@ -8,6 +8,7 @@ import ThemNguoiDung from '.././QuanLyNguoiDung/ThemNguoiDung';
 
 export default class QuanLyNguoiDung extends Component {
     render() {
+        console.log('aaa',this.props);
         return (
             <QuanLyTemplate>
                 <div className=''>
@@ -17,7 +18,7 @@ export default class QuanLyNguoiDung extends Component {
                         {/* <DeleteUserModal /> */}
                     </div>
                     <div className="p-2">
-                        <SearchBar />
+                        
                         <ListNguoiDung />
                     </div>
                 </div>
