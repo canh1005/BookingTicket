@@ -8,10 +8,11 @@ export default function Admin({ Component, ...props }) {
             <Route
                 {...props}
                 render={(propsComponent) => (<QuanLy>
-                    <Component {...propsComponent} />
+                    <Component {...propsComponent} />           
                 </QuanLy>)}
             />
         </div>
     )
+    
 }
 

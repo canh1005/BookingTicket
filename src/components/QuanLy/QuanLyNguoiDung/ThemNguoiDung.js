@@ -119,7 +119,7 @@ class ThemNguoiDung extends Component {
     }
     render() {
         return (
-            <div className='container mt-3'>
+            <div className='container'>
                 <form onSubmit={this.handleSubmit}>
                     {this.Noti()}
                     <div className="form-group row">

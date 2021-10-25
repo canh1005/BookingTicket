@@ -3,7 +3,6 @@ import * as Action from '../../../redux/modules/QuanLyNguoiDung/ListNguoiDungRed
 
 import { connect } from 'react-redux';
 import NguoiDungItem from "./NguoiDungItem";
-import QuanLyNguoiDung from '.';
 import SearchBar from './../../QuanLy/QuanLyNguoiDung/SearchBar'
 
 class ListNguoiDung extends Component {
@@ -90,3 +89,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListNguoiDung)
+

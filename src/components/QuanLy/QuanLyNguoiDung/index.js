@@ -11,7 +11,6 @@ export default class QuanLyNguoiDung extends Component {
         console.log('aaa',this.props);
         return (
             <QuanLyTemplate>
-
                 <div className=''>
                     <div className=''>
                         <ThemNguoiDung />
